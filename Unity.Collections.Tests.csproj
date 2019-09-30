@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2693FB79-5EA6-961A-0012-1BD8A2D1FFC0}</ProjectGuid>
+    <ProjectGuid>{A4B14BC7-6577-9EB4-7B5A-E36D911FAD52}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.Collections.Tests</AssemblyName>
@@ -86,25 +86,25 @@
     <Compile Include="Packages\com.unity.collections@0.1.1-preview\Unity.Collections.Tests\UnsafeUtilityTests.cs" />
     <None Include="Packages\com.unity.collections@0.1.1-preview\Unity.Collections.Tests\Unity.Collections.Tests.asmdef" />
     <Reference Include="Unity.PerformanceTesting">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.PerformanceTesting.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.PerformanceTesting.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -296,7 +296,7 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -655,7 +655,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Collections.csproj">
-      <Project>{4CF7FA28-C2DB-2569-5643-4190F188BA2F}</Project>
+      <Project>{297F0C3C-FBCC-9A83-69C0-0953F48D7E1C}</Project>
       <Name>Unity.Collections</Name>
     </ProjectReference>
   </ItemGroup>

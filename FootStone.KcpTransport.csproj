@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{E443916D-9AE3-E5C6-D54E-F84F1685BF93}</ProjectGuid>
+    <ProjectGuid>{25AC7E56-6F16-5C30-AEF1-53D657C82ECA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>FootStone.KcpTransport</AssemblyName>
@@ -69,13 +69,13 @@
     <Compile Include="D:\work\ECS\TankDemo\Packages\com.footstone.kcptransport\FootStone.KcpTransport\Utils\NetStatics.cs" />
     <None Include="D:\work\ECS\TankDemo\Packages\com.footstone.kcptransport\FootStone.KcpTransport\FootStone.KcpTransport.asmdef" />
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -279,7 +279,7 @@
       <HintPath>D:/work/ECS/TankDemo/Packages/com.footstone.kcptransport/Unity.Networking.Transport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/PackageCache/com.unity.burst@1.1.2/Unity.Burst.Unsafe.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/PackageCache/com.unity.burst@1.1.2/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

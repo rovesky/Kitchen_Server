@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{12F44184-A422-5F27-22E6-507969043F15}</ProjectGuid>
+    <ProjectGuid>{4F4579B2-A4D7-3DB0-79A1-9E3D45589605}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -64,100 +64,100 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Others\GameManager.cs" />
     <Compile Include="Assets\Scripts\Others\TitleScreen.cs" />
-    <Compile Include="Assets\Scripts\Systems\ExlosionSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\InputSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\MySimulationSystemGroup.cs" />
     <Compile Include="Assets\Scripts\Systems\NetworkClientSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\NetworkServerSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\ServerSimulationSystemGroup.cs" />
     <Compile Include="Assets\Scripts\Systems\UpdateUISystem.cs" />
     <Reference Include="Unity.Burst">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.Properties">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Entities.Properties.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Entities.Properties.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Jobs">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Jobs.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Jobs.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Jobs.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Jobs.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Jobs.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Entities.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Entities.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.StaticTypeRegistry">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Entities.StaticTypeRegistry.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Entities.StaticTypeRegistry.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Scenes.Hybrid">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Scenes.Hybrid.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Scenes.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Scenes.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Scenes.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Scenes.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Physics">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Physics.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Physics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Extensions">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Mathematics.Extensions.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Mathematics.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Extensions.Hybrid">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rendering.Hybrid">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Rendering.Hybrid.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Rendering.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Physics.Hybrid">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Physics.Hybrid.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Physics.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.BuildUtils">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Entities.BuildUtils.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Entities.BuildUtils.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities.Hybrid">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Entities.Hybrid.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Entities.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Properties">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Properties.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Properties.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Physics.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Physics.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Physics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Entities">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Entities.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Entities.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Transforms">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Transforms.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Transforms.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Transforms.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Transforms.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Transforms.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Transforms.Hybrid">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -349,7 +349,7 @@
       <HintPath>D:/work/ECS/TankDemo/Packages/com.footstone.kcptransport/Unity.Networking.Transport.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>D:/work/ECS/TankDemo/Client/Library/PackageCache/com.unity.burst@1.1.2/Unity.Burst.Unsafe.dll</HintPath>
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/PackageCache/com.unity.burst@1.1.2/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -708,15 +708,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="FootStone.TankShared.csproj">
-      <Project>{86BE3A39-CC1E-2C31-A16A-A9B1BAF8FB25}</Project>
+      <Project>{DCF8A6D9-0F13-707F-B15D-F1430D615E0B}</Project>
       <Name>FootStone.TankShared</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Collections.csproj">
-      <Project>{4CF7FA28-C2DB-2569-5643-4190F188BA2F}</Project>
+      <Project>{297F0C3C-FBCC-9A83-69C0-0953F48D7E1C}</Project>
       <Name>Unity.Collections</Name>
     </ProjectReference>
     <ProjectReference Include="FootStone.KcpTransport.csproj">
-      <Project>{E443916D-9AE3-E5C6-D54E-F84F1685BF93}</Project>
+      <Project>{25AC7E56-6F16-5C30-AEF1-53D657C82ECA}</Project>
       <Name>FootStone.KcpTransport</Name>
     </ProjectReference>
   </ItemGroup>
