@@ -8,23 +8,19 @@ using Unity.Entities;
 namespace Assets.Scripts.ECS
 {
     [UnityEngine.ExecuteAlways]
-    public class ClientSimulationSystemGroup : ComponentSystemGroup
+    public class ServerSimulationSystemGroup : ComponentSystemGroup
     {
         protected override void OnCreate()
         {
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<InputSystem>());
 
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<NetworkClientSystem>());
-
-
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<NetworkServerSystem>());
+            //  m_systemsToUpdate.Add(World.GetOrCreateSystem<InputSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PlayerFireSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<EnemyFireSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<RayCastSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<HealthSystem>());
-           // m_systemsToUpdate.Add(World.GetOrCreateSystem<ExlosionSystem>());
-
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<NetworkServerSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<HealthSystem>()); 
 
         }
 

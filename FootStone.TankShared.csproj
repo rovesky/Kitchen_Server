@@ -112,6 +112,7 @@
     <Compile Include="D:\work\ECS\TankDemo\Packages\com.footstone.tankshared\FootStone.TankShared\Systems\ResetWorldSystem.cs" />
     <Compile Include="D:\work\ECS\TankDemo\Packages\com.footstone.tankshared\FootStone.TankShared\Systems\SpawnEnemySystem.cs" />
     <Compile Include="D:\work\ECS\TankDemo\Packages\com.footstone.tankshared\FootStone.TankShared\Systems\SpawnPlayerSystem.cs" />
+    <Compile Include="D:\work\ECS\TankDemo\Packages\com.footstone.tankshared\FootStone.TankShared\Utils\NativeStream.cs" />
     <None Include="D:\work\ECS\TankDemo\Packages\com.footstone.tankshared\FootStone.TankShared\FootStone.TankShared.asmdef" />
     <Reference Include="Unity.Entities">
       <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Entities.dll</HintPath>

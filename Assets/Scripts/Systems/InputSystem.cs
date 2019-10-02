@@ -18,6 +18,7 @@ namespace Assets.Scripts.ECS
         {
             InputMask = 1 << LayerMask.NameToLayer("plane");
             base.OnCreate();
+        
         }
 
         protected override void OnUpdate()
