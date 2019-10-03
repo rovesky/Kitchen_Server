@@ -12,13 +12,23 @@ namespace Assets.Scripts.ECS
     {
         protected override void OnCreate()
         {
-
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<GenSnapshotSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<NetworkServerSystem>());
-            //  m_systemsToUpdate.Add(World.GetOrCreateSystem<InputSystem>());
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<CheckVisibleSystem>());
+        
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PlayerFireSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<EnemyFireSystem>());
 
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<MoveForwardSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<MoveSinSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<MovePositionSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<MoveTargetSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<MoveTranslationSystem>());
+
+            
             m_systemsToUpdate.Add(World.GetOrCreateSystem<RayCastSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HealthSystem>()); 
 

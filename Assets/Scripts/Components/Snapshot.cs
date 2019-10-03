@@ -9,9 +9,9 @@ namespace Assets.Scripts.ECS
     [InternalBufferCapacity(128)]
     public  unsafe struct SnapshotTick : IBufferElementData
     {
-        public int tick;
+        public uint tick;
         public int length;    
-       // public NativeStream data;
+        public uint* data;
     }
     [Serializable]
     public struct Snapshot : IComponentData
