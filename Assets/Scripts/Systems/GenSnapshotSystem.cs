@@ -209,10 +209,17 @@ namespace Assets.Scripts.ECS
                 writer.Write(pos.Value.y);
                 writer.Write(pos.Value.z);
 
+                var rotation = EntityManager.GetComponentData<Rotation>(entity);
+                writer.Write(rotation.Value.value.x);
+                writer.Write(rotation.Value.value.y);
+                writer.Write(rotation.Value.value.z);
+                writer.Write(rotation.Value.value.w);
+
                 var health = EntityManager.GetComponentData<Health>(entity);
                 writer.Write(health.Value);
 
                 var attack = EntityManager.GetComponentData<Attack>(entity);
+                writer.Write(attack.Power);
 
                 if (rocekt.Type == RocketType.Player)
                 {
