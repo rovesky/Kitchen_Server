@@ -39,8 +39,13 @@ namespace Assets.Scripts.ECS
                 {
                     tempUMS.Read(data, 0, data.Length);
                 }
-                // FSLog.Info($"snapshot data {data.Length}!");
-                networkServer.SendData(data);
+              //   FSLog.Info($"snapshot data {data.Length}!");
+
+                Entities.ForEach((ref Connection connection) =>
+                {
+                    networkServer.SendData(connection.id,data);                             
+                });
+              
             }
         }
     }

@@ -1,5 +1,4 @@
 ﻿using FootStone.Kcp;
-using System.Collections.Generic;
 using Unity.Entities;
 
 namespace Assets.Scripts.ECS
@@ -8,32 +7,28 @@ namespace Assets.Scripts.ECS
     public class NetworkServerSystem : ComponentSystem, INetworkCallbacks
     {
         private KcpServer kcpServer;
-        private EntityQuery snapShotQuery;
-
-        private List<int> connections = new List<int>();
-
+      
         public void OnConnect(KcpConnection connection)
         {
-            FSLog.Info($"server connection created:{connection.Id}");
-            connections.Add(connection.Id);
-
-            Entities.ForEach((Entity entity,ref SpawnPlayer spawn) =>
-            {
-                FSLog.Info($"SpawnPlayer:{connection.Id}");
-                EntityManager.AddBuffer<PlayerBuffer>(entity);
-                var buffer =  EntityManager.GetBuffer<PlayerBuffer>(entity);
-                buffer.Add(new PlayerBuffer() { playerId = connection.Id });
-                spawn.spawn = true;
-            });
-
+            FSLog.Info($"server connection created:{connection.Id}");       
           
-            connection.Recv += (inSequence, buffer) =>
+
+            var entity = GetEntityQuery(ComponentType.ReadOnly<SpawnPlayerServer>()).
+                GetSingletonEntity();
+            var buffer = EntityManager.GetBuffer<PlayerBuffer>(entity);
+            buffer.Add(new PlayerBuffer() { playerId = connection.Id });
+
+            //接收到客户端的指令
+            connection.Recv += (inSequence, data) =>
             {
-                FSLog.Debug($"[{inSequence}] server recv data");
-                Entities.ForEach((Entity entity, ref PlayerCommand command) =>
+               // FSLog.Debug($"[{inSequence}] server recv data");
+                Entities.ForEach((ref Connection con,ref PlayerCommand command) =>
                 {
-                    command.FromData(buffer);
-                    command.isBack = true;
+                    if (connection.Id == con.id)
+                    {
+                        command.FromData(data);
+                        command.isBack = true;
+                    }
                 });
             };
         }
@@ -41,7 +36,14 @@ namespace Assets.Scripts.ECS
         public void OnDisconnect(int connectionId)
         {
             FSLog.Info($"server connection destroyed:{connectionId}");
-            connections.Remove(connectionId);
+            //删除Player
+            Entities.ForEach((Entity entity,ref Connection connection) =>
+            {
+                if (connectionId == connection.id)
+                {
+                    EntityManager.AddComponentData(entity,new Despawn() { Frame = 0 });
+                }
+            });        
         }
 
         protected override void OnCreate()
@@ -54,25 +56,20 @@ namespace Assets.Scripts.ECS
 
         protected override void OnDestroy()
         {
-            connections.Clear();
-            if (kcpServer != null)
-                kcpServer.Shutdown();
+            FSLog.Info($"NetworkServerSystem OnDestroy!");
+            kcpServer.Shutdown();
         }
 
-        protected  unsafe override void OnUpdate()
+        protected  override void OnUpdate()
         {
-            if (kcpServer == null)
-                return;
-
+      //      FSLog.Info($"NetworkServerSystem OnUpdate!"); 
             kcpServer.Update();
         }
 
-        public void SendData(byte[] data)
+        public void SendData(int id,byte[] data)
         {
-            foreach (var connectionId in connections)
-            {
-                kcpServer.SendData(connectionId, data, data.Length);
-            }
+            //  FSLog.Info($"NetworkServerSystem SendData!");
+            kcpServer.SendData(id, data, data.Length);
         }
     }
 }

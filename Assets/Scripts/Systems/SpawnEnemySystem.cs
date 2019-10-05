@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.ECS
 {
-    [UpdateInGroup(typeof(InitializationSystemGroup))]
+    [DisableAutoCreation]
     public class SpawnEnemySystem : ComponentSystem
     {
 

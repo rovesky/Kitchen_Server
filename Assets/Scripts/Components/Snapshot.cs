@@ -16,7 +16,7 @@ namespace Assets.Scripts.ECS
     [Serializable]
     public struct Snapshot : IComponentData
     {
-        public int i;
+      //  public int i;
     }
 
 }

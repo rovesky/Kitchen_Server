@@ -12,14 +12,13 @@ namespace Assets.Scripts.ECS
     {
         protected override void OnCreate()
         {
-           
             m_systemsToUpdate.Add(World.GetOrCreateSystem<NetworkServerSystem>());
-         
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerSystem>());
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnEnemySystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerServerSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PlayerFireSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<EnemyFireSystem>());
-
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<MoveForwardSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<MoveSinSystem>());
@@ -33,8 +32,6 @@ namespace Assets.Scripts.ECS
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<GenSnapshotSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SendDataSystem>());
-
-
         }
 
         public override void SortSystemUpdateList()

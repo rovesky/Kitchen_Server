@@ -72,12 +72,12 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Battle\Damage.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Battle\Fire.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Battle\Health.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Connection.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Enemy.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Player.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Rocket.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Lifecycle\Despawn.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Lifecycle\SpawnEnemy.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Lifecycle\SpawnPlayer.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveForward.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MovePosition.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveSin.cs" />
@@ -87,7 +87,6 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Presetation\Explosion.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Presetation\UpdateUI.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Score.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\TriggerDestroy.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Core\ConfigVars.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Core\GameDebug.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Core\GameStatistics.cs" />
@@ -126,8 +125,6 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveTargetSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveTranslationSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\RayCastSystem.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\SpawnPlayerSystem.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\NativeStream.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\SpawnEnemyUtil.cs" />
     <None Include="Packages\com.footstone.tankshared\FootStone.TankShared\FootStone.TankShared.asmdef" />
     <Reference Include="Unity.Entities">
