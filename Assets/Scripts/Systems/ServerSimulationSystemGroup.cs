@@ -11,7 +11,9 @@ namespace Assets.Scripts.ECS
     public class ServerSimulationSystemGroup : ComponentSystemGroup
     {
         protected override void OnCreate()
-        {
+        {            
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<ResetWorldSystem>());
+
             m_systemsToUpdate.Add(World.GetOrCreateSystem<NetworkServerSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnEnemySystem>());
@@ -30,13 +32,32 @@ namespace Assets.Scripts.ECS
             m_systemsToUpdate.Add(World.GetOrCreateSystem<RayCastSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HealthSystem>());
 
+           
+
+
+            //    m_systemsToUpdate.Add(World.GetOrCreateSystem<GenSnapshotSystem>());
+            //     m_systemsToUpdate.Add(World.GetOrCreateSystem<SendDataSystem>());
+        }
+
+        public override void SortSystemUpdateList()
+        {
+           
+        }
+    }
+
+    [UpdateInGroup(typeof(LateSimulationSystemGroup))]
+    public class LateServerSimulationSystemGroup : ComponentSystemGroup
+    {
+        protected override void OnCreate()
+        {
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<GenSnapshotSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SendDataSystem>());
         }
 
         public override void SortSystemUpdateList()
         {
-           
+
         }
     }
 }

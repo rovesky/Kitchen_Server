@@ -9,7 +9,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.ECS
 {
-    [UpdateInGroup(typeof(InitializationSystemGroup))]
+    // [UpdateInGroup(typeof(InitializationSystemGroup))]
+    [DisableAutoCreation]
     public class ResetWorldSystem : ComponentSystem
     {
         public bool IsReset = false;
