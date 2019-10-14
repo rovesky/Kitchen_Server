@@ -62,21 +62,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Components\Snapshot.cs" />
     <Compile Include="Assets\Scripts\Components\SpawnPlayer.cs" />
     <Compile Include="Assets\Scripts\Others\GameManager.cs" />
     <Compile Include="Assets\Scripts\Others\TitleScreen.cs" />
     <Compile Include="Assets\Scripts\Systems\CheckVisibleSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\GenSnapshotSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\HealthSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\InputSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\NetworkServerSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\ResetWorldSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SendDataSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\ServerSimulationSystemGroup.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnEnemySystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnPlayerServerSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\UpdateUISystem.cs" />
     <Reference Include="Unity.Burst">
       <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
     </Reference>

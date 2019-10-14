@@ -17,7 +17,7 @@ namespace Assets.Scripts.ECS
             spawnPlayerQuery = GetEntityQuery(ComponentType.ReadOnly<SpawnPlayerServer>());
             var entity = EntityManager.CreateEntity(typeof(SpawnPlayerServer));
             spawnPlayerQuery.SetSingleton(new SpawnPlayerServer());
-            EntityManager.AddBuffer<PlayerBuffer>(entity);
+            EntityManager.AddBuffer<SpawnPlayerBuffer>(entity);
 
             rocket = GameObjectConversionUtility.ConvertGameObjectHierarchy(
                 Resources.Load("Prefabs/Rocket") as GameObject, World.Active);
@@ -30,7 +30,7 @@ namespace Assets.Scripts.ECS
         {
             var entity = spawnPlayerQuery.GetSingletonEntity();
 
-            var buffer = EntityManager.GetBuffer<PlayerBuffer>(entity);
+            var buffer = EntityManager.GetBuffer<SpawnPlayerBuffer>(entity);
             if (buffer.Length == 0)
                 return;
 

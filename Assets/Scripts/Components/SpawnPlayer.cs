@@ -6,17 +6,16 @@ using UnityEngine;
 
 namespace Assets.Scripts.ECS
 {
-    [InternalBufferCapacity(10)]
-    public struct PlayerBuffer : IBufferElementData
+    [InternalBufferCapacity(16)]
+    public struct SpawnPlayerBuffer : IBufferElementData
     {
         public int playerId;
     }
 
     [Serializable]
     public struct SpawnPlayerServer : IComponentData
-    {
-       // public Entity entity;
-       // public bool spawn;
+    {    
+
     }
 
 }

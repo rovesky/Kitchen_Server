@@ -36,7 +36,7 @@ namespace Assets.Scripts.ECS
                 
                    var enemyPrefab = spawn.enemyType == EnemyType.Normal? enemy1Prefab:enemy2Prefab;
 
-                   var entity = SpawnEnemyUtil.SpwanEnemy(EntityManager, enemyPrefab, spawn.enemyType, 
+                   var entity = SpawnEntityUtil.SpwanEnemy(EntityManager, enemyPrefab, spawn.enemyType, 
                        gunTransform.Position, rocket);
                   
                });

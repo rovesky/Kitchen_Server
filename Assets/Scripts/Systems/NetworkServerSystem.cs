@@ -15,8 +15,8 @@ namespace Assets.Scripts.ECS
 
             var entity = GetEntityQuery(ComponentType.ReadOnly<SpawnPlayerServer>()).
                 GetSingletonEntity();
-            var buffer = EntityManager.GetBuffer<PlayerBuffer>(entity);
-            buffer.Add(new PlayerBuffer() { playerId = connection.Id });
+            var buffer = EntityManager.GetBuffer<SpawnPlayerBuffer>(entity);
+            buffer.Add(new SpawnPlayerBuffer() { playerId = connection.Id });
 
             //接收到客户端的指令
             connection.Recv += (inSequence, data) =>

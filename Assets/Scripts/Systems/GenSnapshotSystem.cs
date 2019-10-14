@@ -40,7 +40,29 @@ namespace Assets.Scripts.ECS
                 snapShotQuery.SetSingleton(new Snapshot());
                 EntityManager.AddBuffer<SnapshotTick>(entity);
 
-                FSLog.Debug("Snapshot create1!");
+                FSLog.Debug("Snapshot create!");
+            }
+        }
+
+        protected unsafe override void OnDestroy()
+        {
+            if (snapShotQuery.CalculateEntityCount() > 0)
+            {
+                var entity = snapShotQuery.GetSingletonEntity();
+                var buffer = EntityManager.GetBuffer<SnapshotTick>(entity);
+
+                if (buffer.Length == 0)
+                    return;
+
+                var array = buffer.ToNativeArray(Allocator.Temp);
+          
+
+                for (int i = 0; i < array.Length; ++i)
+                {
+                    UnsafeUtility.Free(array[i].data, Allocator.Persistent);
+                }
+                buffer.Clear();
+                FSLog.Debug("Snapshot destroy!");
             }
         }
 
