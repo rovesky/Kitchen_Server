@@ -38,7 +38,10 @@ namespace Assets.Scripts.ECS
 
                    var entity = SpawnEntityUtil.SpwanEnemy(EntityManager, enemyPrefab, spawn.enemyType, 
                        gunTransform.Position, rocket);
-                  
+
+                  // EntityManager.AddComponentData(entity,new CheckOutOfRange());
+
+
                });
         }
     }

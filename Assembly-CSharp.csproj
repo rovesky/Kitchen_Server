@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Components\SpawnPlayer.cs" />
     <Compile Include="Assets\Scripts\Others\GameManager.cs" />
     <Compile Include="Assets\Scripts\Others\TitleScreen.cs" />
+    <Compile Include="Assets\Scripts\Systems\CheckOutOfRangeSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\CheckVisibleSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\GenSnapshotSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\HealthSystem.cs" />

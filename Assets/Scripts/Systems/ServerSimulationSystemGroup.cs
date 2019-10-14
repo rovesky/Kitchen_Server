@@ -28,7 +28,7 @@ namespace Assets.Scripts.ECS
             m_systemsToUpdate.Add(World.GetOrCreateSystem<MoveTargetSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<MoveTranslationSystem>());
 
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<CheckVisibleSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<CheckOutOfRangeSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<RayCastSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HealthSystem>());
 

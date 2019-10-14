@@ -47,7 +47,7 @@ namespace Assets.Scripts.ECS
 
                 Quaternion r = Quaternion.identity;
                 r.eulerAngles = new Vector3(0, -180, 0);
-                Rotation rotation = new Rotation() { Value = r};
+                Rotation rotation = new Rotation() { Value = r };
 
                 //   rotation.Value.value.y = -180;
 
@@ -80,11 +80,13 @@ namespace Assets.Scripts.ECS
 
                 EntityManager.AddComponentData(e, new Connection()
                 {
-                    id = playerBuffer.playerId,              
+                    id = playerBuffer.playerId,
 
                 });
 
-            }             
+            }
+
+            array.Dispose();
         }
     }
 }
