@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using Unity.Entities;
+using FootStone.ECS;
 
 namespace Assets.Scripts.ECS
 {
     [DisableAutoCreation]
-    public class HealthSystem : ComponentSystem
+    public class HealthSystem : FSComponentSystem
     {
 
         private void DoDespawan(Entity entity, ref Health health, ref Damage damage, int frame)

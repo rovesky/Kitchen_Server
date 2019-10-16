@@ -6,3 +6,4 @@
 /build
 /.vs
 /Packages/com.footstone.tankshared
+/Packages/com.unity.entities@0.1.1-preview

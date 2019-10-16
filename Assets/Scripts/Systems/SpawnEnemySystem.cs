@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Components;
+using FootStone.ECS;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 namespace Assets.Scripts.ECS
 {
     [DisableAutoCreation]
-    public class SpawnEnemySystem : ComponentSystem
+    public class SpawnEnemySystem : FSComponentSystem
     {
 
         private Entity rocket;
@@ -28,7 +29,7 @@ namespace Assets.Scripts.ECS
                (ref LocalToWorld gunTransform, ref Rotation gunRotation, ref SpawnEnemy spawn) =>
                {      
 
-                   spawn.spawnTimer -= Time.deltaTime;
+                   spawn.spawnTimer -= GameWorld.TickDuration;
                    if (spawn.spawnTimer > 0)
                        return;
 

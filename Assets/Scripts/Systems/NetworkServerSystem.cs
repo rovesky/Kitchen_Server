@@ -1,10 +1,11 @@
-﻿using FootStone.Kcp;
+﻿using FootStone.ECS;
+using FootStone.Kcp;
 using Unity.Entities;
 
 namespace Assets.Scripts.ECS
 {
     [DisableAutoCreation]
-    public class NetworkServerSystem : ComponentSystem, INetworkCallbacks
+    public class NetworkServerSystem : FSComponentSystem, INetworkCallbacks
     {
         private KcpServer kcpServer;
       
@@ -27,7 +28,7 @@ namespace Assets.Scripts.ECS
                     if (connection.Id == con.id)
                     {
                         command.FromData(data);
-                        command.isBack = true;
+                     //   command.isBack = true;
                     }
                 });
             };

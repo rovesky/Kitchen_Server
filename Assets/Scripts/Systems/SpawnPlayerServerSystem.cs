@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using FootStone.ECS;
+using Unity.Entities;
 using Unity.Physics.Authoring;
 using Unity.Transforms;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 namespace Assets.Scripts.ECS
 {  
     [DisableAutoCreation]
-    public class SpawnPlayerServerSystem : ComponentSystem
+    public class SpawnPlayerServerSystem : FSComponentSystem
     {
         private Entity rocket;
         private Entity player;

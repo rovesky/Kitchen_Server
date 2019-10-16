@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootStone.ECS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ using UnityEngine;
 namespace Assets.Scripts.ECS
 {
     [DisableAutoCreation]
-    public class CheckOutOfRangeSystem : ComponentSystem
+    public class CheckOutOfRangeSystem : FSComponentSystem
     {
         protected override void OnUpdate()
         {
@@ -25,21 +26,15 @@ namespace Assets.Scripts.ECS
             });
 
             Entities.WithAllReadOnly<Rocket>().ForEach((Entity entity,ref Rocket rocket, ref Translation translation) =>
-            {
-                bool despawn = false;
+            {       
                 if (translation.Value.z < -7
                     || translation.Value.z > 5 
                     || translation.Value.x > 7
                     || translation.Value.x < -7)
-                {
-                    despawn = true;
-                }
-               
-
-                if (despawn && !EntityManager.HasComponent<Despawn>(entity))
+                {    
+                    if (!EntityManager.HasComponent<Despawn>(entity))
                         EntityManager.AddComponentData(entity, new Despawn() { Frame = 0 });
-           
-                
+                }                  
             });
         }
     }

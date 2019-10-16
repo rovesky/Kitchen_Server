@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootStone.ECS;
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
@@ -14,14 +15,14 @@ using UnityEngine;
 namespace Assets.Scripts.ECS
 {
     [DisableAutoCreation]
-    public class GenSnapshotSystem : ComponentSystem
+    public class GenSnapshotSystem : FSComponentSystem
     {
         private EntityQuery playerQuery;
         private EntityQuery enemyQuery;
         private EntityQuery rocketQuery;
         private EntityQuery snapShotQuery;
 
-        private uint tick = 0;
+  //      private uint tick = 0;
 
         protected override void OnCreate()
         {
@@ -72,8 +73,9 @@ namespace Assets.Scripts.ECS
             var tempUMS = new UnmanagedMemoryStream((byte*)data, 4 * 1024, 4 * 1024, FileAccess.Write);
 
             var writer = new BinaryWriter(tempUMS);
-            tick++;
-            writer.Write(tick);
+            //   tick++;
+          //  FSLog.Info($"GameWorld.Tick:{GameWorld.Tick}");
+            writer.Write(GameWorld.Tick);
             //player
             writer.Write(playerQuery.CalculateEntityCount());
             var playerEntities = playerQuery.ToEntityArray(Allocator.Persistent);
@@ -178,7 +180,7 @@ namespace Assets.Scripts.ECS
                 buffer.RemoveAt(0);
             }
             //     FSLog.Info($"buffer.Length:{buffer.Length},data.length:{snapshotTick.data.ComputeItemCount()}");
-            buffer.Add(new SnapshotTick { data = data, tick = tick, length = (int)writer.BaseStream.Position});
+            buffer.Add(new SnapshotTick { data = data, tick = GameWorld.Tick, length = (int)writer.BaseStream.Position});
 
         }
     }

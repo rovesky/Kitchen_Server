@@ -1,11 +1,12 @@
-﻿using System.IO;
+﻿using FootStone.ECS;
+using System.IO;
 using Unity.Entities;
 
 namespace Assets.Scripts.ECS
 {
 
     [DisableAutoCreation]
-    public class SendDataSystem : ComponentSystem
+    public class SendDataSystem : FSComponentSystem
     {    
         private EntityQuery snapShotQuery;
         private NetworkServerSystem networkServer;

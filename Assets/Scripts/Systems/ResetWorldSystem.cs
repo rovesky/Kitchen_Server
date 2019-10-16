@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootStone.ECS;
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.ECS
 {
-    // [UpdateInGroup(typeof(InitializationSystemGroup))]
     [DisableAutoCreation]
-    public class ResetWorldSystem : ComponentSystem
+    public class ResetWorldSystem : FSComponentSystem
     {
         public bool IsReset = false;
         protected override void OnUpdate()
