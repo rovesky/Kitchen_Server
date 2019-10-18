@@ -83,11 +83,12 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveSin.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveTarget.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveTranslation.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\PlayerCommand.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Presetation\Explosion.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Presetation\UpdateUI.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Score.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\UserCommand.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\World\Snapshot.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\World\WorldTime.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Core\ConfigVars.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Core\GameDebug.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Core\GameStatistics.cs" />
@@ -96,12 +97,6 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Entity\FSComponentSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Entity\GameTick.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Entity\GameWorld.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Main\ClientGameLoop.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Main\Game.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Main\GameConfiguration.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Main\GameNetworkEvents.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Main\PlayerSettings.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Main\ServerGameLoop.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Network\Compression\HuffmanInputStream.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Network\Compression\HuffmanOutputStream.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Network\Compression\IInputStream.cs" />
@@ -129,6 +124,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\RayCastSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\WorldTimeSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\SpawnEntityUtil.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\TickStateDenseBuffer.cs" />
     <None Include="Packages\com.footstone.tankshared\FootStone.TankShared\FootStone.TankShared.asmdef" />
     <Reference Include="Unity.Burst">
       <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>

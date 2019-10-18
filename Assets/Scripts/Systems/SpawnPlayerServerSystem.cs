@@ -72,7 +72,7 @@ namespace Assets.Scripts.ECS
                     Speed = 5,
                 });
 
-                EntityManager.AddComponentData(e, new PlayerCommand()
+                EntityManager.AddComponentData(e, new UserCommand()
                 {
                     renderTick = 0,
                     targetPos = Vector3.zero
@@ -81,7 +81,8 @@ namespace Assets.Scripts.ECS
 
                 EntityManager.AddComponentData(e, new Connection()
                 {
-                    id = playerBuffer.playerId,
+                    id = playerBuffer.connectionId,
+                    sessionId  = playerBuffer.playerId
 
                 });
 

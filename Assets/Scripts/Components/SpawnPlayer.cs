@@ -10,6 +10,7 @@ namespace Assets.Scripts.ECS
     public struct SpawnPlayerBuffer : IBufferElementData
     {
         public int playerId;
+        public int connectionId;
     }
 
     [Serializable]

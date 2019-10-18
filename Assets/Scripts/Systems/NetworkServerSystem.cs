@@ -11,19 +11,17 @@ namespace Assets.Scripts.ECS
       
         public void OnConnect(KcpConnection connection)
         {
-            FSLog.Info($"server connection created:{connection.Id}");       
-          
+            FSLog.Info($"server connection created:{connection.Id}");                 
 
-            var entity = GetEntityQuery(ComponentType.ReadOnly<SpawnPlayerServer>()).
-                GetSingletonEntity();
+            var entity = GetSingletonEntity<SpawnPlayerServer>();
             var buffer = EntityManager.GetBuffer<SpawnPlayerBuffer>(entity);
-            buffer.Add(new SpawnPlayerBuffer() { playerId = connection.Id });
+            buffer.Add(new SpawnPlayerBuffer() { playerId = (int)connection.SessionId, connectionId = connection.Id});
 
             //接收到客户端的指令
             connection.Recv += (inSequence, data) =>
             {
                // FSLog.Debug($"[{inSequence}] server recv data");
-                Entities.ForEach((ref Connection con,ref PlayerCommand command) =>
+                Entities.ForEach((ref Connection con,ref UserCommand command) =>
                 {
                     if (connection.Id == con.id)
                     {

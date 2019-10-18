@@ -61,39 +61,40 @@ namespace Assets.Scripts.ECS
 
         private void ServerTick()
         {
-            gameWorld.Tick++;
-            gameWorld.TickDuration = gameWorld.GameTick.TickInterval;
-            gameWorld.FrameDuration = gameWorld.GameTick.TickInterval;
+            var worldTime = GetSingleton<WorldTime>();
+            worldTime.tick.Tick++;
+            worldTime.tick.TickDuration = worldTime.tick.TickInterval;
+       //     worldTime.tick.FrameDuration = worldTime.tick.TickInterval;
+            SetSingleton(worldTime);
             base.OnUpdate();
         }
 
         protected override void OnUpdate()
         {
-          
+            var worldTime = GetSingleton<WorldTime>();          
             int tickCount = 0;
-            while (Game.frameTime > nextTickTime)
+            while (worldTime.frameTime > nextTickTime)
             {
                 tickCount++;
                 ServerTick();
-
               //  if (gameWorld.Tick % 10 == 0)
                 //    Thread.Sleep(random.Next(30, 100));
 
-                nextTickTime += gameWorld.GameTick.TickInterval;
+                nextTickTime += worldTime.tick.TickInterval;
             }
 
-            float remainTime = (float)(nextTickTime - Game.frameTime);
+            float remainTime = (float)(nextTickTime - worldTime.frameTime);
 
-            int rate = gameWorld.GameTick.TickRate;
-            if (remainTime > 0.75f * gameWorld.GameTick.TickInterval)
+            int rate = worldTime.tick.TickRate;
+            if (remainTime > 0.75f * worldTime.tick.TickInterval)
                 rate -= 2;
-            else if (remainTime < 0.25f * gameWorld.GameTick.TickInterval)
+            else if (remainTime < 0.25f * worldTime.tick.TickInterval)
                 rate += 2;
 
             Application.targetFrameRate = rate;
 
-        //    FSLog.Info($"targetFrameRate:{Application.targetFrameRate}," +
-           //    $"Game.frameTime:{Game.frameTime},remainTime:{remainTime},tick:{gameWorld.Tick}");
+       //     FSLog.Info($"targetFrameRate:{Application.targetFrameRate}," +
+             //  $"Game.frameTime:{worldTime.frameTime},remainTime:{remainTime},tick:{worldTime.tick.Tick}");
         }
     }
 

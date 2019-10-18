@@ -74,8 +74,9 @@ namespace Assets.Scripts.ECS
 
             var writer = new BinaryWriter(tempUMS);
             //   tick++;
-          //  FSLog.Info($"GameWorld.Tick:{GameWorld.Tick}");
-            writer.Write(GameWorld.Tick);
+            //  FSLog.Info($"GameWorld.Tick:{GameWorld.Tick}");
+            var worldTime = GetSingleton<WorldTime>();
+            writer.Write(worldTime.tick.Tick);
             //player
             writer.Write(playerQuery.CalculateEntityCount());
             var playerEntities = playerQuery.ToEntityArray(Allocator.Persistent);
@@ -84,6 +85,7 @@ namespace Assets.Scripts.ECS
             {
                 var player = EntityManager.GetComponentData<Player>(entity);
                 writer.Write(player.id);
+                writer.Write(player.playerId);
 
                 var pos = EntityManager.GetComponentData<Translation>(entity);
                 writer.Write(pos.Value.x);
@@ -180,7 +182,7 @@ namespace Assets.Scripts.ECS
                 buffer.RemoveAt(0);
             }
             //     FSLog.Info($"buffer.Length:{buffer.Length},data.length:{snapshotTick.data.ComputeItemCount()}");
-            buffer.Add(new SnapshotTick { data = data, tick = GameWorld.Tick, length = (int)writer.BaseStream.Position});
+            buffer.Add(new SnapshotTick { data = data, tick = worldTime.tick.Tick, length = (int)writer.BaseStream.Position});
 
         }
     }

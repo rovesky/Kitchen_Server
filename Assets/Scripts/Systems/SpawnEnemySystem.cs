@@ -27,9 +27,9 @@ namespace Assets.Scripts.ECS
         {
             Entities.ForEach(
                (ref LocalToWorld gunTransform, ref Rotation gunRotation, ref SpawnEnemy spawn) =>
-               {      
-
-                   spawn.spawnTimer -= GameWorld.TickDuration;
+               {
+                   var worldTime = GetSingleton<WorldTime>();
+                   spawn.spawnTimer -= worldTime.tick.TickDuration;
                    if (spawn.spawnTimer > 0)
                        return;
 
