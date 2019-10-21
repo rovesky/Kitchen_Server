@@ -76,6 +76,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Enemy.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Player.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Rocket.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\EntityPredictData.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Lifecycle\Despawn.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Lifecycle\SpawnEnemy.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveForward.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Network\NetworkUtils.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Network\NetworkWriter.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Network\StringExtensionMethods.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\ApplyPresentationSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\DespawnSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\FireSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveForwardSystem.cs" />

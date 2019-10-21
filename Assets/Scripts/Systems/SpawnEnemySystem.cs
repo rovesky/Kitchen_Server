@@ -29,18 +29,22 @@ namespace Assets.Scripts.ECS
                (ref LocalToWorld gunTransform, ref Rotation gunRotation, ref SpawnEnemy spawn) =>
                {
                    var worldTime = GetSingleton<WorldTime>();
-                   spawn.spawnTimer -= worldTime.tick.TickDuration;
+                   spawn.spawnTimer -= worldTime.gameTick.TickDuration;
                    if (spawn.spawnTimer > 0)
                        return;
 
                    spawn.spawnTimer = Random.Range(spawn.spawnIntervalMin, spawn.spawnIntervalMax);
                 
                    var enemyPrefab = spawn.enemyType == EnemyType.Normal? enemy1Prefab:enemy2Prefab;
-
+               //    FSLog.Info($"spawn.enemyType:{spawn.enemyType}");
                    var entity = SpawnEntityUtil.SpwanEnemy(EntityManager, enemyPrefab, spawn.enemyType, 
                        gunTransform.Position, rocket);
 
-                  // EntityManager.AddComponentData(entity,new CheckOutOfRange());
+                   EntityManager.AddComponentData(entity,new EntityPredictData()
+                   {
+                       position = gunTransform.Position,
+                       rotation = Quaternion.identity
+                   });
 
 
                });

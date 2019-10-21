@@ -38,11 +38,13 @@ namespace Assets.Scripts.ECS
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<MoveSinSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<MovePositionSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<MoveTargetSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystemE<MoveTranslationSystem>());
+         //   m_systemsToUpdate.Add(World.GetOrCreateSystemE<MoveTranslationSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<CheckOutOfRangeSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<RayCastSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<HealthSystem>());
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystemE<ApplyPresentationSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<DespawnSystem>());
 
@@ -62,8 +64,8 @@ namespace Assets.Scripts.ECS
         private void ServerTick()
         {
             var worldTime = GetSingleton<WorldTime>();
-            worldTime.tick.Tick++;
-            worldTime.tick.TickDuration = worldTime.tick.TickInterval;
+            worldTime.gameTick.Tick++;
+            worldTime.gameTick.TickDuration = worldTime.gameTick.TickInterval;
        //     worldTime.tick.FrameDuration = worldTime.tick.TickInterval;
             SetSingleton(worldTime);
             base.OnUpdate();
@@ -80,15 +82,15 @@ namespace Assets.Scripts.ECS
               //  if (gameWorld.Tick % 10 == 0)
                 //    Thread.Sleep(random.Next(30, 100));
 
-                nextTickTime += worldTime.tick.TickInterval;
+                nextTickTime += worldTime.gameTick.TickInterval;
             }
 
             float remainTime = (float)(nextTickTime - worldTime.frameTime);
 
-            int rate = worldTime.tick.TickRate;
-            if (remainTime > 0.75f * worldTime.tick.TickInterval)
+            int rate = worldTime.gameTick.TickRate;
+            if (remainTime > 0.75f * worldTime.gameTick.TickInterval)
                 rate -= 2;
-            else if (remainTime < 0.25f * worldTime.tick.TickInterval)
+            else if (remainTime < 0.25f * worldTime.gameTick.TickInterval)
                 rate += 2;
 
             Application.targetFrameRate = rate;

@@ -76,7 +76,7 @@ namespace Assets.Scripts.ECS
             //   tick++;
             //  FSLog.Info($"GameWorld.Tick:{GameWorld.Tick}");
             var worldTime = GetSingleton<WorldTime>();
-            writer.Write(worldTime.tick.Tick);
+            writer.Write(worldTime.gameTick.Tick);
             //player
             writer.Write(playerQuery.CalculateEntityCount());
             var playerEntities = playerQuery.ToEntityArray(Allocator.Persistent);
@@ -87,10 +87,10 @@ namespace Assets.Scripts.ECS
                 writer.Write(player.id);
                 writer.Write(player.playerId);
 
-                var pos = EntityManager.GetComponentData<Translation>(entity);
-                writer.Write(pos.Value.x);
-                writer.Write(pos.Value.y);
-                writer.Write(pos.Value.z);
+                var pos = EntityManager.GetComponentData<EntityPredictData>(entity).position;
+                writer.Write(pos.x);
+                writer.Write(pos.y);
+                writer.Write(pos.z);
 
                 var health = EntityManager.GetComponentData<Health>(entity);
                 writer.Write(health.Value);
@@ -111,10 +111,10 @@ namespace Assets.Scripts.ECS
                 writer.Write(enemy.id);
                 writer.Write((byte)enemy.type);
 
-                var pos = EntityManager.GetComponentData<Translation>(entity);
-                writer.Write(pos.Value.x);
-                writer.Write(pos.Value.y);
-                writer.Write(pos.Value.z);
+                var pos = EntityManager.GetComponentData<EntityPredictData>(entity).position;
+                writer.Write(pos.x);
+                writer.Write(pos.y);
+                writer.Write(pos.z);
 
                 var health = EntityManager.GetComponentData<Health>(entity);
                 writer.Write(health.Value);
@@ -140,16 +140,16 @@ namespace Assets.Scripts.ECS
                 writer.Write(rocekt.id);
                 writer.Write((byte)rocekt.Type);
 
-                var pos = EntityManager.GetComponentData<Translation>(entity);
-                writer.Write(pos.Value.x);
-                writer.Write(pos.Value.y);
-                writer.Write(pos.Value.z);
+                var pos = EntityManager.GetComponentData<EntityPredictData>(entity).position;
+                writer.Write(pos.x);
+                writer.Write(pos.y);
+                writer.Write(pos.z);
 
-                var rotation = EntityManager.GetComponentData<Rotation>(entity);
-                writer.Write(rotation.Value.value.x);
-                writer.Write(rotation.Value.value.y);
-                writer.Write(rotation.Value.value.z);
-                writer.Write(rotation.Value.value.w);
+                var rotation = EntityManager.GetComponentData<EntityPredictData>(entity).rotation;
+                writer.Write(rotation.value.x);
+                writer.Write(rotation.value.y);
+                writer.Write(rotation.value.z);
+                writer.Write(rotation.value.w);
 
                 var health = EntityManager.GetComponentData<Health>(entity);
                 writer.Write(health.Value);
@@ -159,9 +159,9 @@ namespace Assets.Scripts.ECS
 
                 if (rocekt.Type == RocketType.Player)
                 {
-                    var move = EntityManager.GetComponentData<MoveTranslation>(entity);
+                    var move = EntityManager.GetComponentData<MoveForward>(entity);
                     writer.Write(move.Speed);
-                    writer.Write((byte)move.Direction);
+                //    writer.Write((byte)move.Direction);
                 }
                 else if (rocekt.Type == RocketType.Enemy)
                 {
@@ -182,7 +182,7 @@ namespace Assets.Scripts.ECS
                 buffer.RemoveAt(0);
             }
             //     FSLog.Info($"buffer.Length:{buffer.Length},data.length:{snapshotTick.data.ComputeItemCount()}");
-            buffer.Add(new SnapshotTick { data = data, tick = worldTime.tick.Tick, length = (int)writer.BaseStream.Position});
+            buffer.Add(new SnapshotTick { data = data, tick = worldTime.gameTick.Tick, length = (int)writer.BaseStream.Position});
 
         }
     }
