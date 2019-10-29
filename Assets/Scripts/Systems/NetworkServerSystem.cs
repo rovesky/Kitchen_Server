@@ -5,10 +5,11 @@ using Unity.Entities;
 namespace Assets.Scripts.ECS
 {
     [DisableAutoCreation]
-    public class NetworkServerSystem : FSComponentSystem, INetworkCallbacks
+    public class NetworkServerSystem : FSComponentSystem, FootStone.Kcp.INetworkCallbacks
     {
         private KcpServer kcpServer;
-      
+        private HandleCommandSystem handleCommandSystem;
+
         public void OnConnect(KcpConnection connection)
         {
             FSLog.Info($"server connection created:{connection.Id}");                 
@@ -20,13 +21,30 @@ namespace Assets.Scripts.ECS
             //接收到客户端的指令
             connection.Recv += (inSequence, data) =>
             {
-               // FSLog.Debug($"[{inSequence}] server recv data");
-                Entities.ForEach((ref Connection con,ref UserCommand command) =>
+                var tick = GetSingleton<WorldTime>().Tick;
+             //  FSLog.Info($"ServerTick:{tick}");
+                // FSLog.Debug($"[{inSequence}] server recv data");
+                Entities.ForEach((Entity e,ref Connection con/*,ref UserCommand command*/) =>
                 {
                     if (connection.Id == con.id)
-                    {
-                        command.FromData(data);
-                     //   command.isBack = true;
+                    {                      
+                        var commandBuffer = new UserCommandBuffer();
+                        commandBuffer.command.FromData(data);
+                        FSLog.Info($"recv command:{commandBuffer.command.renderTick}," +
+                            $"{commandBuffer.command.checkTick}," +
+                            $"{tick}");
+                            //$"{commandBuffer.command.buttons.flags},"+
+                            //$"{commandBuffer.command.targetPos.x},"+
+                            //$"{commandBuffer.command.targetPos.y},"+
+                            //$"{commandBuffer.command.targetPos.z}");
+
+                        if (commandBuffer.command.checkTick >= tick)
+                        {
+                            EntityManager.GetBuffer<UserCommandBuffer>(e).Add(commandBuffer);
+                            FSLog.Info($"buffer command:{commandBuffer.command.renderTick},{commandBuffer.command.checkTick},{tick}");
+                            //     FSLog.Info($"UserCommandBuffer add new {commandBuffer.command.checkTick},{tick}");
+                        }
+                    
                     }
                 });
             };
@@ -50,6 +68,8 @@ namespace Assets.Scripts.ECS
             base.OnCreate();          
 
             kcpServer = new KcpServer(this, 1001);
+
+        //    handleCommandSystem = World.GetOrCreateSystem<HandleCommandSystem>();
             FSLog.Info($"server listening on 1001!");
         }
 

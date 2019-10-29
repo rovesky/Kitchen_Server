@@ -13,6 +13,7 @@ namespace Assets.Scripts.ECS
         private Entity rocket;
         private GameObject enemy1Prefab;
         private GameObject enemy2Prefab;
+        private NetworkServerNewSystem networkServerSystem;
 
         protected override void OnCreate()
         {
@@ -21,6 +22,8 @@ namespace Assets.Scripts.ECS
 
             enemy1Prefab = Resources.Load("Prefabs/Enemy1") as GameObject;
             enemy2Prefab = Resources.Load("Prefabs/Enemy3") as GameObject;
+
+            networkServerSystem = World.GetOrCreateSystem<NetworkServerNewSystem>();
         }
 
         protected override void OnUpdate()
@@ -34,19 +37,28 @@ namespace Assets.Scripts.ECS
                        return;
 
                    spawn.spawnTimer = Random.Range(spawn.spawnIntervalMin, spawn.spawnIntervalMax);
-                
-                   var enemyPrefab = spawn.enemyType == EnemyType.Normal? enemy1Prefab:enemy2Prefab;
-               //    FSLog.Info($"spawn.enemyType:{spawn.enemyType}");
-                   var entity = SpawnEntityUtil.SpwanEnemy(EntityManager, enemyPrefab, spawn.enemyType, 
+
+                   var enemyPrefab = spawn.enemyType == EnemyType.Normal ? enemy1Prefab : enemy2Prefab;
+                   //    FSLog.Info($"spawn.enemyType:{spawn.enemyType}");
+
+
+                   var entity = SpawnEntityUtil.SpwanEnemy(EntityManager, enemyPrefab, spawn.enemyType,
                        gunTransform.Position, rocket);
 
-                   EntityManager.AddComponentData(entity,new EntityPredictData()
+                   EntityManager.AddComponentData(entity, new EntityPredictData()
                    {
                        position = gunTransform.Position,
                        rotation = Quaternion.identity
                    });
 
+                   var typeId = spawn.enemyType == EnemyType.Normal ? 1 : 2;
+                   var id = networkServerSystem.RegisterEntity((ushort)typeId, -1, entity);
 
+                   EntityManager.SetComponentData(entity, new Enemy()
+                   {
+                       id = id,
+                       type = spawn.enemyType
+                   });
                });
         }
     }

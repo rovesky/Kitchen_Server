@@ -11,6 +11,7 @@ namespace Assets.Scripts.ECS
     {
         private Entity rocket;
         private Entity player;
+        private NetworkServerNewSystem networkServerSystem;
         private EntityQuery spawnPlayerQuery;
 
         protected override void OnCreate()
@@ -25,6 +26,8 @@ namespace Assets.Scripts.ECS
 
             player = GameObjectConversionUtility.ConvertGameObjectHierarchy(
                 Resources.Load("Prefabs/Player") as GameObject, World.Active);
+
+            networkServerSystem = World.GetOrCreateSystem<NetworkServerNewSystem>();
         }
 
         protected override void OnUpdate()
@@ -42,24 +45,26 @@ namespace Assets.Scripts.ECS
             {
                 var playerBuffer = array[i];
 
+               
                 //创建Player
                 var e = EntityManager.Instantiate(player);
-                Translation position = new Translation() { Value = Vector3.zero };
 
+                var id = networkServerSystem.RegisterEntity(0, playerBuffer.playerId, e);
+
+                Translation position = new Translation() { Value = Vector3.zero };
                 Quaternion r = Quaternion.identity;
                 r.eulerAngles = new Vector3(0, -180, 0);
                 Rotation rotation = new Rotation() { Value = r };
 
-                //   rotation.Value.value.y = -180;
-
+                //   rotation.Value.value.y = -180;         
                 EntityManager.SetComponentData(e, position);
                 EntityManager.SetComponentData(e, rotation);
-                EntityManager.AddComponentData(e, new Player() { playerId = playerBuffer.playerId, id = e.Index });
+                EntityManager.AddComponentData(e, new Player() { playerId = playerBuffer.playerId, id = id });
                 EntityManager.AddComponentData(e, new Attack() { Power = 10000 });
                 EntityManager.AddComponentData(e, new Damage());
                 EntityManager.AddComponentData(e, new Health() { Value = 30 });
-                EntityManager.AddComponentData(e, new Score() { ScoreValue = 0, MaxScoreValue = 0 });
-                EntityManager.AddComponentData(e, new UpdateUI());
+                EntityManager.AddComponentData(e, new Score() { ScoreValue = 0, MaxScoreValue = 10 });
+             //   EntityManager.AddComponentData(e, new UpdateUI());
 
                 EntityManager.AddComponentData(e, new FireRocket()
                 {
@@ -79,6 +84,8 @@ namespace Assets.Scripts.ECS
 
                 });
 
+                EntityManager.AddBuffer<UserCommandBuffer>(e);
+
                 EntityManager.AddComponentData(e, new Connection()
                 {
                     id = playerBuffer.connectionId,
@@ -93,6 +100,7 @@ namespace Assets.Scripts.ECS
                     rotation = rotation.Value
 
                 });
+               
 
             }
 

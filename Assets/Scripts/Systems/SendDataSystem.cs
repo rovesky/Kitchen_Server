@@ -40,7 +40,8 @@ namespace Assets.Scripts.ECS
                 {
                     tempUMS.Read(data, 0, data.Length);
                 }
-              //   FSLog.Info($"snapshot data {data.Length}!");
+                var tick = GetSingleton<WorldTime>().Tick;
+             //   FSLog.Info($"send snapshot data : {snapshotTick.tick},{tick}");
 
                 Entities.ForEach((ref Connection connection) =>
                 {

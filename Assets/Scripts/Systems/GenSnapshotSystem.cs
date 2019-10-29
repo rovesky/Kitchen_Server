@@ -171,7 +171,7 @@ namespace Assets.Scripts.ECS
             }
             rocketEntities.Dispose();
             writer.Flush();
-
+         
             //snapShot
             var snapshot = snapShotQuery.GetSingletonEntity();
             var buffer = EntityManager.GetBuffer<SnapshotTick>(snapshot);

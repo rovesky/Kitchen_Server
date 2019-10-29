@@ -67,15 +67,19 @@
     <Compile Include="Assets\Scripts\Others\TitleScreen.cs" />
     <Compile Include="Assets\Scripts\Systems\CheckOutOfRangeSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\CheckVisibleSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\DespawnServerSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\EcsCustomBootstrap.cs" />
     <Compile Include="Assets\Scripts\Systems\GenSnapshotSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\HandleCommandSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\HealthSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\NetworkServerNewSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\NetworkServerSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\ResetWorldSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SendDataSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\ServerSimulationSystemGroup.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnEnemySystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnPlayerServerSystem.cs" />
+    <None Include="Assets\Scripts\新建文本文档.txt" />
     <Reference Include="Unity.Burst">
       <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
     </Reference>
