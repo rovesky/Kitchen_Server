@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using FootStone.ECS;
-using FootStone.Kcp;
 using Unity.Entities;
 
 namespace Assets.Scripts.ECS
@@ -127,7 +126,7 @@ namespace Assets.Scripts.ECS
                 writer.WriteByte("type",(byte)enemy.type);
 
                 var pos = EntityManager.GetComponentData<EntityPredictData>(entity).position;
-                writer.WriteVector3("pos", pos);    
+                writer.WriteVector3Q("pos", pos);    
 
                 var health = EntityManager.GetComponentData<Health>(entity);
                 writer.WriteInt32("health",health.Value);
@@ -179,37 +178,6 @@ namespace Assets.Scripts.ECS
 
                 }
             });
-
-
-            //ServerGameLoop.ClientInfo client;
-            //if (!m_Clients.TryGetValue(connectionId, out client))
-            //    return;
-
-            //if (client.player)
-            //{
-            //    var serializeContext = new SerializeContext
-            //    {
-            //        entityManager = EntityManager,
-            //        entity = Entity.Null,
-            //        refSerializer = null,
-            //        tick = tick
-            //    };
-
-            //    if (tick == m_GameWorld.worldTime.tick)
-            //        client.latestCommand.Deserialize(ref serializeContext, ref data);
-
-            //    // Pass on command to controlled entity
-            //    if (client.player.controlledEntity != Entity.Null)
-            //    {
-            //        var userCommand = m_GameWorld.GetEntityManager().GetComponentData<UserCommandComponentData>(
-            //            client.player.controlledEntity);
-
-            //        userCommand.command = client.latestCommand;
-
-            //        m_GameWorld.GetEntityManager().SetComponentData<UserCommandComponentData>(
-            //            client.player.controlledEntity, userCommand);
-            //    }
-            //}
         }
     }
 }

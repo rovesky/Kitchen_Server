@@ -1,5 +1,4 @@
 ﻿using FootStone.ECS;
-using FootStone.Kcp;
 using Unity.Entities;
 
 namespace Assets.Scripts.ECS

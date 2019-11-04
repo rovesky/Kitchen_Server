@@ -75,6 +75,9 @@
     <Reference Include="Unity.Mathematics">
       <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
@@ -273,17 +276,11 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="System.Buffers">
-      <HintPath>D:/work/ECS/TankDemo/Server/Packages/com.footstone.kcptransport/System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Memory">
-      <HintPath>D:/work/ECS/TankDemo/Server/Packages/com.footstone.kcptransport/System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>D:/work/ECS/TankDemo/Server/Packages/com.footstone.kcptransport/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Burst.Unsafe">
       <HintPath>D:/work/ECS/TankDemo/Server/Library/PackageCache/com.unity.burst@1.1.2/Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>D:/work/ECS/TankDemo/Server/Library/PackageCache/com.unity.collections@0.1.1-preview/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -643,10 +640,6 @@
     <ProjectReference Include="Unity.Mathematics.Extensions.csproj">
       <Project>{0D9335FA-8041-9F02-8A4E-DC17281BC211}</Project>
       <Name>Unity.Mathematics.Extensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Collections.csproj">
-      <Project>{297F0C3C-FBCC-9A83-69C0-0953F48D7E1C}</Project>
-      <Name>Unity.Collections</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Transforms.csproj">
       <Project>{05C8809E-6D48-7539-E191-6AD9E92AEFBE}</Project>

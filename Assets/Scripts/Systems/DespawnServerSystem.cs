@@ -36,7 +36,8 @@ namespace Assets.Scripts.ECS
                     {
                         id = EntityManager.GetComponentData<Enemy>(entity).id;
                     }
-                    networkServerNewSystem.UnRegisterEntity(id);
+                    if(id != -1)
+                        networkServerNewSystem.UnRegisterEntity(id);
                 }
 
 
