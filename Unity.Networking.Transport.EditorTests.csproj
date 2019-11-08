@@ -77,25 +77,25 @@
     <Compile Include="Packages\com.unity.transport\Tests\Editor\UtilitiesTests.cs" />
     <None Include="Packages\com.unity.transport\Tests\Editor\Unity.Networking.Transport.EditorTests.asmdef" />
     <Reference Include="Unity.Collections">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -287,7 +287,7 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

@@ -66,72 +66,70 @@
     <Compile Include="Assets\Scripts\Components\SpawnPlayer.cs" />
     <Compile Include="Assets\Scripts\Others\GameManager.cs" />
     <Compile Include="Assets\Scripts\Others\TitleScreen.cs" />
-    <Compile Include="Assets\Scripts\Systems\CheckVisibleSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\DespawnServerSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\EcsCustomBootstrap.cs" />
-    <Compile Include="Assets\Scripts\Systems\GenSnapshotSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\HandleCommandSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\HealthSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\NetworkServerNewSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\NetworkServerSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\ResetWorldSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\SendDataSystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\ServerSimulationSystemGroup.cs" />
-    <Compile Include="Assets\Scripts\Systems\SpawnEnemySystem.cs" />
-    <Compile Include="Assets\Scripts\Systems\SpawnPlayerServerSystem.cs" />
-    <Reference Include="Unity.Burst">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
-    </Reference>
+    <Compile Include="Assets\Scripts\PlaneSystems\EcsCustomBootstrap.cs" />
+    <Compile Include="Assets\Scripts\PlaneSystems\HealthSystem.cs" />
+    <Compile Include="Assets\Scripts\PlaneSystems\ResetWorldSystem.cs" />
+    <Compile Include="Assets\Scripts\PlaneSystems\ServerSimulationSystemGroup.cs" />
+    <Compile Include="Assets\Scripts\PlaneSystems\SpawnEnemySystem.cs" />
+    <Compile Include="Assets\Scripts\SharedSystems\DespawnServerSystem.cs" />
+    <Compile Include="Assets\Scripts\SharedSystems\GenSnapshotSystem.cs" />
+    <Compile Include="Assets\Scripts\SharedSystems\HandleCommandSystem.cs" />
+    <Compile Include="Assets\Scripts\SharedSystems\KitchenServerSimulationSystemGroup.cs" />
+    <Compile Include="Assets\Scripts\SharedSystems\NetworkServerNewSystem.cs" />
+    <Compile Include="Assets\Scripts\SharedSystems\SpawnPlayerServerSystem.cs" />
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Jobs">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Jobs.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Jobs.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Jobs.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Physics">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Physics.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rendering.Hybrid">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Rendering.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Physics.Hybrid">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Physics.Hybrid.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Properties">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Properties.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Physics.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Physics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Jobs">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Jobs.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Jobs.Editor">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Jobs.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Physics">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Physics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rendering.Hybrid">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Rendering.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Physics.Hybrid">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Physics.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Properties">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Properties.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Physics.Editor">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Physics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -311,10 +309,10 @@
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/PackageCache/com.unity.burst@1.1.2/Unity.Burst.Unsafe.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/PackageCache/com.unity.burst@1.1.2/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/PackageCache/com.unity.collections@0.1.1-preview/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/PackageCache/com.unity.collections@0.1.1-preview/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

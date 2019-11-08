@@ -25,7 +25,7 @@ namespace Assets.Scripts.ECS
                 Resources.Load("Prefabs/Rocket") as GameObject, World.Active);
 
             player = GameObjectConversionUtility.ConvertGameObjectHierarchy(
-                Resources.Load("Prefabs/Player") as GameObject, World.Active);
+                Resources.Load("Player1") as GameObject, World.Active);
 
             networkServerSystem = World.GetOrCreateSystem<NetworkServerNewSystem>();
         }
@@ -51,7 +51,7 @@ namespace Assets.Scripts.ECS
 
                 var id = networkServerSystem.RegisterEntity(0, playerBuffer.playerId, e);
 
-                Translation position = new Translation() { Value = Vector3.zero };
+                Translation position = new Translation() { Value = { x = 0, y = 1, z = -5 } };
                 Quaternion r = Quaternion.identity;
                 r.eulerAngles = new Vector3(0, -180, 0);
                 Rotation rotation = new Rotation() { Value = r };
@@ -64,17 +64,16 @@ namespace Assets.Scripts.ECS
                 EntityManager.AddComponentData(e, new Damage());
                 EntityManager.AddComponentData(e, new Health() { Value = 30 });
                 EntityManager.AddComponentData(e, new Score() { ScoreValue = 0, MaxScoreValue = 10 });
-             //   EntityManager.AddComponentData(e, new UpdateUI());
 
-                EntityManager.AddComponentData(e, new FireRocket()
+                /*   EntityManager.AddComponentData(e, new FireRocket()
+                    {
+                        Rocket = rocket,
+                        FireCooldown = 0.1f,
+                        RocketTimer = 0,
+                    });*/
+                EntityManager.AddComponentData(e, new MoveInput()
                 {
-                    Rocket = rocket,
-                    FireCooldown = 0.1f,
-                    RocketTimer = 0,
-                });
-                EntityManager.AddComponentData(e, new MovePosition()
-                {
-                    Speed = 5,
+                    Speed = 6,
                 });
 
                 EntityManager.AddComponentData(e, new UserCommand()
@@ -93,14 +92,12 @@ namespace Assets.Scripts.ECS
 
                 });
 
-
                 EntityManager.AddComponentData(e, new EntityPredictData()
                 {
                     position = position.Value,
                     rotation = rotation.Value
 
-                });
-               
+                });               
 
             }
 

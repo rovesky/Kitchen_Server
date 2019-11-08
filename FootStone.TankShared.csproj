@@ -80,6 +80,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Lifecycle\Despawn.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Lifecycle\SpawnEnemy.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveForward.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveInput.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MovePosition.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveSin.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveTarget.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\DespawnSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\FireSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveForwardSystem.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveInputSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MovePositionSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveSinSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveTargetSystem.cs" />
@@ -184,34 +186,35 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\Primitives\ray.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\Primitives\Sphere.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\SpawnEntityUtil.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\StopWatchExtensions.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\TickStateDenseBuffer.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\TickStateSparseBuffer.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\WeakAssetReference\Editor\WeakAssetReferenceDrawer.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\WeakAssetReference\WeakAssetReference.cs" />
     <None Include="Packages\com.footstone.tankshared\FootStone.TankShared\FootStone.TankShared.asmdef" />
     <Reference Include="Unity.Collections">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Physics">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Physics.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Physics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Physics.Hybrid">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.Physics.Hybrid.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Physics.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -403,10 +406,10 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/PackageCache/com.unity.burst@1.1.2/Unity.Burst.Unsafe.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/PackageCache/com.unity.burst@1.1.2/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>D:/work/ECS/TankDemo/Server/Library/PackageCache/com.unity.collections@0.1.1-preview/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/PackageCache/com.unity.collections@0.1.1-preview/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
