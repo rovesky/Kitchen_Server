@@ -62,21 +62,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Behaviour\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\Components\SpawnPlayer.cs" />
-    <Compile Include="Assets\Scripts\Others\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Others\TitleScreen.cs" />
-    <Compile Include="Assets\Scripts\PlaneSystems\EcsCustomBootstrap.cs" />
-    <Compile Include="Assets\Scripts\PlaneSystems\HealthSystem.cs" />
-    <Compile Include="Assets\Scripts\PlaneSystems\ResetWorldSystem.cs" />
-    <Compile Include="Assets\Scripts\PlaneSystems\ServerSimulationSystemGroup.cs" />
-    <Compile Include="Assets\Scripts\PlaneSystems\SpawnEnemySystem.cs" />
-    <Compile Include="Assets\Scripts\SharedSystems\DespawnServerSystem.cs" />
-    <Compile Include="Assets\Scripts\SharedSystems\GenSnapshotSystem.cs" />
-    <Compile Include="Assets\Scripts\SharedSystems\HandleCommandSystem.cs" />
-    <Compile Include="Assets\Scripts\SharedSystems\KitchenServerSimulationSystemGroup.cs" />
-    <Compile Include="Assets\Scripts\SharedSystems\NetworkServerNewSystem.cs" />
-    <Compile Include="Assets\Scripts\SharedSystems\SpawnPlayerServerSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\DespawnServerSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\EcsCustomBootstrap.cs" />
+    <Compile Include="Assets\Scripts\Systems\GenSnapshotSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\HandleCommandSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\KitchenServerSimulationSystemGroup.cs" />
+    <Compile Include="Assets\Scripts\Systems\NetworkServerNewSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\SpawnPlayerServerSystem.cs" />
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
