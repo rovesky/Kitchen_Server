@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Behaviour\PlayerBehaviour.cs" />
     <Compile Include="Assets\Scripts\Components\SpawnPlayer.cs" />
     <Compile Include="Assets\Scripts\Others\GameManager.cs" />
     <Compile Include="Assets\Scripts\Others\TitleScreen.cs" />
