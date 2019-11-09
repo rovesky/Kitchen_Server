@@ -87,7 +87,7 @@ namespace Assets.Scripts.ECS
 
                 EntityManager.AddComponentData(e, new Connection()
                 {
-                    id = playerBuffer.connectionId,
+                    id = playerBuffer.playerId,
                     sessionId  = playerBuffer.playerId
 
                 });

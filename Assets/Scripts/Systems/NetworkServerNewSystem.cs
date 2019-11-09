@@ -163,11 +163,12 @@ namespace Assets.Scripts.ECS
             // FSLog.Debug($"[{inSequence}] server recv data");
             Entities.ForEach((Entity e, ref Connection con/*,ref UserCommand command*/) =>
             {
+                //FSLog.Info($"[{connectionId},{con.id}] recv command:{commandBuffer.command.renderTick}," +
+                //      $"{commandBuffer.command.checkTick}," +
+                //      $"{tick}");
                 if (connectionId == con.id)
                 {                   
-                    FSLog.Info($"recv command:{commandBuffer.command.renderTick}," +
-                        $"{commandBuffer.command.checkTick}," +
-                        $"{tick}");                
+                               
 
                     if (commandBuffer.command.checkTick >= serverTick)
                     {
