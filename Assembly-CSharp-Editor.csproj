@@ -69,20 +69,11 @@
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Jobs">
       <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Jobs.dll</HintPath>
@@ -99,11 +90,17 @@
     <Reference Include="Unity.Physics">
       <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Physics.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rendering.Hybrid">
       <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Rendering.Hybrid.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Physics.Hybrid">
       <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Physics.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
@@ -122,6 +119,9 @@
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/2019.2.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

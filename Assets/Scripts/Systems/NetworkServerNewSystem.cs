@@ -167,16 +167,13 @@ namespace Assets.Scripts.ECS
                 //      $"{commandBuffer.command.checkTick}," +
                 //      $"{tick}");
                 if (connectionId == con.id)
-                {                   
-                               
-
+                {  
                     if (commandBuffer.command.checkTick >= serverTick)
                     {
                         EntityManager.GetBuffer<UserCommandBuffer>(e).Add(commandBuffer);
                      //   FSLog.Info($"buffer command:{commandBuffer.command.renderTick},{commandBuffer.command.checkTick},{tick}");
                         //     FSLog.Info($"UserCommandBuffer add new {commandBuffer.command.checkTick},{tick}");
                     }
-
                 }
             });
         }

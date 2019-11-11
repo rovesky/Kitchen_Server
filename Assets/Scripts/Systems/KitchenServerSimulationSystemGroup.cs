@@ -24,7 +24,6 @@ namespace Assets.Scripts.ECS
 
         protected override void OnCreate()
         {
-
             ConfigVar.Init();
             random = new System.Random();
           
@@ -34,16 +33,12 @@ namespace Assets.Scripts.ECS
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HandleCommandSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<SpawnPlayerServerSystem>());
-
             //   m_systemsToUpdate.Add(World.GetOrCreateSystemE<RayCastSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<MoveInputSystem>());
-
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<ApplyPresentationSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystemE<DespawnServerSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystemE<DespawnSystem>());
-     
-        
+            m_systemsToUpdate.Add(World.GetOrCreateSystemE<DespawnSystem>());            
         }
 
         /// <summary>
@@ -60,9 +55,7 @@ namespace Assets.Scripts.ECS
             worldTime.gameTick.Tick++;
             worldTime.gameTick.TickDuration = worldTime.gameTick.TickInterval;
             //     worldTime.tick.FrameDuration = worldTime.tick.TickInterval;
-
             networkServerSystem.HandleClientCommands((int)worldTime.gameTick.Tick);
-
             SetSingleton(worldTime);
             base.OnUpdate();
         }
@@ -75,7 +68,6 @@ namespace Assets.Scripts.ECS
             simStartTimeTick = worldTime.Tick;
 
             networkServerSystem.Update();
-
               
             int tickCount = 0;
             while (worldTime.frameTime > nextTickTime)
