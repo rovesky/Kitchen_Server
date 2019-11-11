@@ -188,7 +188,6 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\StopWatchExtensions.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\TickStateDenseBuffer.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\TickStateSparseBuffer.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\TickStateSparseBufferStruct.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\WeakAssetReference\WeakAssetReference.cs" />
     <None Include="Packages\com.footstone.tankshared\FootStone.TankShared\FootStone.TankShared.asmdef" />
     <Reference Include="Unity.Collections">
