@@ -53,7 +53,7 @@ namespace Assets.Scripts.ECS
 
                 Translation position = new Translation() { Value = { x = 0, y = 1, z = -5 } };
                 Quaternion r = Quaternion.identity;
-                r.eulerAngles = new Vector3(0, -180, 0);
+             //   r.eulerAngles = new Vector3(0, -180, 0);
                 Rotation rotation = new Rotation() { Value = r };
 
                 //   rotation.Value.value.y = -180;         

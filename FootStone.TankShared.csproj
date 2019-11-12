@@ -72,6 +72,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Battle\Damage.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Battle\Fire.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Battle\Health.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\CharacterDataComponent.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Connection.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Enemy.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Player.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\ReplicatedEntity\ReplicatedEntity.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\ReplicatedEntity\ReplicatedEntityFactory.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\ApplyPresentationSystem.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\CharacterMoveSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\CheckOutOfRangeSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\DespawnSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\FireSystem.cs" />
@@ -172,6 +174,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\BundledResource\AssetRegistryRoot.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\BundledResource\BundledResourceManager.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\BundledResource\RegistryBase.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\CharacterControllerUtilities.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\CircularList.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\FloatRollingAverage.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\FSLog.cs" />
