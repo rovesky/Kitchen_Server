@@ -109,8 +109,9 @@ namespace Assets.Scripts.ECS
                 writer.WriteInt32("id",player.id);
                 writer.WriteInt32("playerId",player.playerId);
 
-                var pos = EntityManager.GetComponentData<EntityPredictData>(entity).position;
-                writer.WriteVector3Q("pos",pos);              
+                var entityPredictData = EntityManager.GetComponentData<EntityPredictData>(entity);
+                writer.WriteVector3Q("pos", entityPredictData.position);
+                writer.WriteQuaternionQ("rotation", entityPredictData.rotation);
 
                 var health = EntityManager.GetComponentData<Health>(entity);
                 writer.WriteInt32("health",health.Value);
