@@ -1,18 +1,12 @@
 ﻿using FootStone.ECS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Unity.Entities;
+using Unity.Physics.Systems;
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace Assets.Scripts.ECS
-{ 
-    [UnityEngine.ExecuteAlways]
-    public class KitchenServerSimulationSystemGroup : ComponentSystemGroup
+{
+	[UpdateAfter(typeof(ExportPhysicsWorld)), UpdateBefore(typeof(EndFramePhysicsSystem))]
+	public class KitchenServerSimulationSystemGroup : ComponentSystemGroup
     {
         private GameWorld gameWorld;
         private NetworkServerNewSystem networkServerSystem;
@@ -32,13 +26,13 @@ namespace Assets.Scripts.ECS
             networkServerSystem = World.GetOrCreateSystem<NetworkServerNewSystem>();
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HandleCommandSystem>());
 
-            m_systemsToUpdate.Add(World.GetOrCreateSystemE<SpawnPlayerServerSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerServerSystem>());
             //   m_systemsToUpdate.Add(World.GetOrCreateSystemE<RayCastSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystemE<MoveInputSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystemE<ApplyPresentationSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterMoveSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyPresentationSystem>());
 
-            m_systemsToUpdate.Add(World.GetOrCreateSystemE<DespawnServerSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystemE<DespawnSystem>());            
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnServerSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnSystem>());            
         }
 
         /// <summary>
