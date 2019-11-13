@@ -75,6 +75,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\CharacterDataComponent.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Connection.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Enemy.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Plate.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Player.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Rocket.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\EntityPredictData.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveSin.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveTarget.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveTranslation.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\PickupItem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Presetation\Explosion.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Presetation\UpdateUI.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Score.cs" />
@@ -169,6 +171,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveSinSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveTargetSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveTranslationSystem.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\PickupSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\RayCastSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\WorldTimeSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\BundledResource\AssetRegistryRoot.cs" />

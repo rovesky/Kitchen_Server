@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FootStone.ECS;
 using Unity.Entities;
+using Unity.Transforms;
 
 namespace Assets.Scripts.ECS
 {
@@ -120,29 +121,21 @@ namespace Assets.Scripts.ECS
                 writer.WriteInt32("score",score.ScoreValue);
                 writer.WriteInt32("maxScore", score.MaxScoreValue);
             }
-            else if (EntityManager.HasComponent<Enemy>(entity))
+            else if (EntityManager.HasComponent<Plate>(entity))
             {
-                var enemy = EntityManager.GetComponentData<Enemy>(entity);
-                writer.WriteInt32("id",enemy.id);
-                writer.WriteByte("type",(byte)enemy.type);
 
-                var pos = EntityManager.GetComponentData<EntityPredictData>(entity).position;
-                writer.WriteVector3Q("pos", pos);    
+                FSLog.Info($"GenerateEntitySnapshot Plate:{entityId}");
+                var plate = EntityManager.GetComponentData<Plate>(entity);
+                writer.WriteInt32("id",plate.id);
+                //var entityPredictData = EntityManager.GetComponentData<EntityPredictData>(entity);
+                //writer.WriteVector3Q("pos", entityPredictData.position);
+                //writer.WriteQuaternionQ("rotation", entityPredictData.rotation);
 
-                var health = EntityManager.GetComponentData<Health>(entity);
-                writer.WriteInt32("health",health.Value);
-
-                var attack = EntityManager.GetComponentData<Attack>(entity);
-                writer.WriteInt32("attack",attack.Power);
-
-                if (enemy.type == EnemyType.Super)
-                {
-                    var fireRocket = EntityManager.GetComponentData<FireRocket>(entity);
-                    writer.WriteFloatQ("fireCooldown",fireRocket.FireCooldown);
-                    writer.WriteFloatQ("rocketTimer", fireRocket.RocketTimer);
-                }
+                var position = EntityManager.GetComponentData<Translation>(entity);
+                writer.WriteVector3Q("pos", position.Value);
+                var rotation = EntityManager.GetComponentData<Rotation>(entity);
+                writer.WriteQuaternionQ("rotation", rotation.Value);
             }
-
         }
 
         public void HandleClientCommands(int tick)

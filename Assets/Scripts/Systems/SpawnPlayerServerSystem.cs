@@ -102,7 +102,12 @@ namespace Assets.Scripts.ECS
                     position = position.Value,
                     rotation = rotation.Value
 
-                });               
+                });
+
+                EntityManager.AddComponentData(e, new PickupItem()
+                {
+                    pickupEntity = Entity.Null
+                });
 
             }
 

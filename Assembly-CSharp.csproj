@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Systems\HandleCommandSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\KitchenServerSimulationSystemGroup.cs" />
     <Compile Include="Assets\Scripts\Systems\NetworkServerNewSystem.cs" />
+    <Compile Include="Assets\Scripts\Systems\SpawnPlatesSystem.cs" />
     <Compile Include="Assets\Scripts\Systems\SpawnPlayerServerSystem.cs" />
     <Reference Include="Unity.Burst">
       <HintPath>D:/work/ECS/Kitchen/Server/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>

@@ -27,8 +27,11 @@ namespace Assets.Scripts.ECS
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HandleCommandSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerServerSystem>());
-            //   m_systemsToUpdate.Add(World.GetOrCreateSystemE<RayCastSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlatesSystem>());
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<PickupSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterMoveSystem>());
+
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyPresentationSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnServerSystem>());
