@@ -31,8 +31,9 @@ namespace Assets.Scripts.ECS
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PickupSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterMoveSystem>());
+			m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterTriggerSystem>());
 
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyPresentationSystem>());
+			m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyPresentationSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnServerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnSystem>());            
