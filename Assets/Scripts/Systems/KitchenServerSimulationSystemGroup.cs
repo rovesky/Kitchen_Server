@@ -30,10 +30,14 @@ namespace Assets.Scripts.ECS
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlatesSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PickupSystem>());
+           // m_systemsToUpdate.Add(World.GetOrCreateSystem<ReleaseItemSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<ThrowSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterMoveSystem>());
 			m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterTriggerSystem>());
 
 			m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyPresentationSystem>());
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<ItemStateServerSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnServerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnSystem>());            

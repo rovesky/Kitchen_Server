@@ -35,19 +35,23 @@ namespace Assets.Scripts.ECS
             var id = networkServerSystem.RegisterEntity(1, -1, e);
             EntityManager.AddComponentData(e, new Plate() { id = id });
 
-            Translation position = new Translation() { Value = { x = -4, y = 1, z = -1 } };
-            Rotation rotation = new Rotation() { Value = Quaternion.identity };
+            var position = new Translation() { Value = { x = -4, y = 1, z = -1 } };
 
             EntityManager.SetComponentData(e, position);
-
-            //EntityManager.AddComponentData(e, new EntityPredictData()
+            //EntityManager.AddComponentData(e, new ItemState()
             //{
             //    position = position.Value,
-            //    rotation = rotation.Value
-
+            //    rotation = Quaternion.identity,
+            //    owner = Entity.Null
             //});
 
+            EntityManager.AddComponentData(e, new ItemInterpolatedState()
+            {
+                position = position.Value,
+                rotation = Quaternion.identity,
+                owner = Entity.Null
+            });
 
-        }      
+        }
     }
 }

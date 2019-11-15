@@ -107,34 +107,50 @@ namespace Assets.Scripts.ECS
             if (EntityManager.HasComponent<Player>(entity))
             {
                 var player = EntityManager.GetComponentData<Player>(entity);
-                writer.WriteInt32("id",player.id);
-                writer.WriteInt32("playerId",player.playerId);
+                writer.WriteInt32("id", player.id);
+                writer.WriteInt32("playerId", player.playerId);
 
                 var entityPredictData = EntityManager.GetComponentData<EntityPredictData>(entity);
                 writer.WriteVector3Q("pos", entityPredictData.position);
                 writer.WriteQuaternionQ("rotation", entityPredictData.rotation);
 
+                int id = 0;
+                if (entityPredictData.pickupEntity == Entity.Null || !EntityManager.HasComponent<Plate>(entityPredictData.pickupEntity))
+                    id = -1;
+                else
+                    id = EntityManager.GetComponentData<Plate>(entityPredictData.pickupEntity).id;
+                writer.WriteInt32("pickupEntity", id);
+
+         //       FSLog.Info($"pickupEntity:{id}");
+
                 var health = EntityManager.GetComponentData<Health>(entity);
-                writer.WriteInt32("health",health.Value);
+                writer.WriteInt32("health", health.Value);
 
                 var score = EntityManager.GetComponentData<Score>(entity);
-                writer.WriteInt32("score",score.ScoreValue);
+                writer.WriteInt32("score", score.ScoreValue);
                 writer.WriteInt32("maxScore", score.MaxScoreValue);
             }
             else if (EntityManager.HasComponent<Plate>(entity))
             {
-
-                FSLog.Info($"GenerateEntitySnapshot Plate:{entityId}");
+                //FSLog.Info($"GenerateEntitySnapshot Plate:{entityId}");
                 var plate = EntityManager.GetComponentData<Plate>(entity);
-                writer.WriteInt32("id",plate.id);
-                //var entityPredictData = EntityManager.GetComponentData<EntityPredictData>(entity);
-                //writer.WriteVector3Q("pos", entityPredictData.position);
-                //writer.WriteQuaternionQ("rotation", entityPredictData.rotation);
+                writer.WriteInt32("id", plate.id);
 
-                var position = EntityManager.GetComponentData<Translation>(entity);
-                writer.WriteVector3Q("pos", position.Value);
-                var rotation = EntityManager.GetComponentData<Rotation>(entity);
-                writer.WriteQuaternionQ("rotation", rotation.Value);
+                var itemState = EntityManager.GetComponentData<ItemInterpolatedState>(entity);
+                writer.WriteVector3Q("pos", itemState.position);
+                writer.WriteQuaternionQ("rotation", itemState.rotation);
+
+                int id = 0;
+                if (itemState.owner == Entity.Null || !EntityManager.HasComponent<Player>(itemState.owner))
+                    id = -1;
+                else
+                    id = EntityManager.GetComponentData<Player>(itemState.owner).id;
+                writer.WriteInt32("owner", id);
+
+                //var position = EntityManager.GetComponentData<Translation>(entity);
+                //writer.WriteVector3Q("pos", position.Value);
+                //var rotation = EntityManager.GetComponentData<Rotation>(entity);
+                //writer.WriteQuaternionQ("rotation", rotation.Value);
             }
         }
 

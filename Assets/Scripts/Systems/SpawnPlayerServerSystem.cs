@@ -52,11 +52,8 @@ namespace Assets.Scripts.ECS
                 var id = networkServerSystem.RegisterEntity(0, playerBuffer.playerId, e);
 
                 Translation position = new Translation() { Value = { x = 0, y = 1, z = -5 } };
-                Quaternion r = Quaternion.identity;
-             //   r.eulerAngles = new Vector3(0, -180, 0);
-                Rotation rotation = new Rotation() { Value = r };
-
-                //   rotation.Value.value.y = -180;         
+                Rotation rotation = new Rotation() { Value = Quaternion.identity };
+                
                 EntityManager.SetComponentData(e, position);
                 EntityManager.SetComponentData(e, rotation);
                 EntityManager.AddComponentData(e, new Player() { playerId = playerBuffer.playerId, id = id });
@@ -70,12 +67,7 @@ namespace Assets.Scripts.ECS
 					Entity = e,
 				});
 
-				/*   EntityManager.AddComponentData(e, new FireRocket()
-                    {
-                        Rocket = rocket,
-                        FireCooldown = 0.1f,
-                        RocketTimer = 0,
-                    });*/
+			
 				EntityManager.AddComponentData(e, new MoveInput()
                 {
                     Speed = 6,
@@ -87,7 +79,6 @@ namespace Assets.Scripts.ECS
                     targetPos = Vector3.zero
 
                 });
-
                 EntityManager.AddBuffer<UserCommandBuffer>(e);
 
                 EntityManager.AddComponentData(e, new Connection()
@@ -104,9 +95,11 @@ namespace Assets.Scripts.ECS
 
                 });
 
-                EntityManager.AddComponentData(e, new PickupItem()
+                EntityManager.AddComponentData(e, new PickupItem());
+
+                EntityManager.AddComponentData(e, new ThrowItem()
                 {
-                    pickupEntity = Entity.Null
+                    speed = 10
                 });
 
             }

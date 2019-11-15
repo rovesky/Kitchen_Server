@@ -68,6 +68,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Behaviour\SpawnEnemyBehaviour.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Behaviour\SpawnPlayerBehaviour.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Behaviour\TimeToKill.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Behaviour\TriggerDataBehaviour.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Battle\Attack.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Battle\Damage.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Battle\Fire.cs" />
@@ -79,6 +80,11 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Player.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Entity\Rocket.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\EntityPredictData.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\IInterpolate.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Item\Item.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Item\PickupItem.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Item\ReleaseItem.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Item\ThrowItem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Lifecycle\Despawn.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Lifecycle\SpawnEnemy.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveForward.cs" />
@@ -87,10 +93,11 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveSin.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveTarget.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Move\MoveTranslation.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\PickupItem.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Presetation\Explosion.cs" />
-    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Presetation\UpdateUI.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Presentation\Explosion.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Presentation\UpdateUI.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Score.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Trigger\OverlappingTriggerComponent.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\Trigger\TriggerDataComponent.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\UserCommand.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\World\Snapshot.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Components\World\WorldTime.cs" />
@@ -160,11 +167,14 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\ReplicatedEntity\ReplicatedComponent.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\ReplicatedEntity\ReplicatedEntity.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\ReplicatedEntity\ReplicatedEntityFactory.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\ApplyItemPresentationSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\ApplyPresentationSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\CharacterMoveSystem.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\CharacterTriggerSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\CheckOutOfRangeSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\DespawnSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\FireSystem.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\ItemStateServerSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveForwardSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveInputSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MovePositionSystem.cs" />
@@ -173,6 +183,7 @@
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\MoveTranslationSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\PickupSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\RayCastSystem.cs" />
+    <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\ThrowSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Systems\WorldTimeSystem.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\BundledResource\AssetRegistryRoot.cs" />
     <Compile Include="Packages\com.footstone.tankshared\FootStone.TankShared\Utils\BundledResource\BundledResourceManager.cs" />
