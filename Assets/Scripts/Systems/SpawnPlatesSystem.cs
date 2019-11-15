@@ -1,4 +1,5 @@
 ﻿using FootStone.ECS;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
@@ -30,27 +31,37 @@ namespace Assets.Scripts.ECS
 
             isSpawned = true;
 
-            var e = EntityManager.Instantiate(platePrefab);
+			var query = GetEntityQuery(typeof(TriggerDataComponent));
 
-            var id = networkServerSystem.RegisterEntity(1, -1, e);
-            EntityManager.AddComponentData(e, new Plate() { id = id });
+			var entities = query.ToEntityArray(Allocator.TempJob);
 
-            var position = new Translation() { Value = { x = -4, y = 1, z = -1 } };
+			for (int i = 0; i < 3; ++i)
+			{
+				var entity = entities[i * 2];
+				var slot = EntityManager.GetComponentData<SlotComponent>(entity);
+				var pos = EntityManager.GetComponentData<LocalToWorld>(slot.SlotEntity);
 
-            EntityManager.SetComponentData(e, position);
-            //EntityManager.AddComponentData(e, new ItemState()
-            //{
-            //    position = position.Value,
-            //    rotation = Quaternion.identity,
-            //    owner = Entity.Null
-            //});
+				var e = EntityManager.Instantiate(platePrefab);
+				Translation position = new Translation() { Value = pos.Position };
+				Rotation rotation = new Rotation() { Value = Quaternion.identity };
 
-            EntityManager.AddComponentData(e, new ItemInterpolatedState()
-            {
-                position = position.Value,
-                rotation = Quaternion.identity,
-                owner = Entity.Null
-            });
+				EntityManager.SetComponentData(e, position);
+				EntityManager.SetComponentData(e, rotation);
+
+				var id = networkServerSystem.RegisterEntity(1, -1, e);
+				EntityManager.AddComponentData(e, new Plate { id = id, IsFree = false });
+
+				slot.FiltInEntity = e;
+				EntityManager.SetComponentData(entity, slot);
+
+				EntityManager.AddComponentData(e, new ItemInterpolatedState()
+				{
+					position = position.Value,
+					rotation = Quaternion.identity,
+					owner = Entity.Null
+				});
+			}
+			entities.Dispose();
 
         }
     }
