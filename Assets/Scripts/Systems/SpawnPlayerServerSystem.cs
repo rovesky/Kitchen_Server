@@ -99,7 +99,7 @@ namespace Assets.Scripts.ECS
 
                 EntityManager.AddComponentData(e, new ThrowItem()
                 {
-                    speed = 10
+                    speed = 14
                 });
 
             }
