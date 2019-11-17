@@ -7,33 +7,29 @@ using UnityEngine;
 namespace Assets.Scripts.ECS
 {  
     [DisableAutoCreation]
-    public class SpawnPlayerServerSystem : FSComponentSystem
+    public class SpawnPlayerServerSystem : ComponentSystem
     {
-        private Entity rocket;
-        private Entity player;
-        private NetworkServerNewSystem networkServerSystem;
-        private EntityQuery spawnPlayerQuery;
-
+     //   private Entity rocket;
+        private Entity playerPrefab;
+        private NetworkServerSystem networkServerSystem;
         protected override void OnCreate()
-        {
-            spawnPlayerQuery = GetEntityQuery(ComponentType.ReadOnly<SpawnPlayerServer>());
-            var entity = EntityManager.CreateEntity(typeof(SpawnPlayerServer));
-            spawnPlayerQuery.SetSingleton(new SpawnPlayerServer());
-            EntityManager.AddBuffer<SpawnPlayerBuffer>(entity);
+        {  
+             var entity = EntityManager.CreateEntity(typeof(SpawnPlayerServer));
+             SetSingleton(new SpawnPlayerServer());
+             EntityManager.AddBuffer<SpawnPlayerBuffer>(entity);
 
-            rocket = GameObjectConversionUtility.ConvertGameObjectHierarchy(
-                Resources.Load("Prefabs/Rocket") as GameObject, World.Active);
+            //rocket = GameObjectConversionUtility.ConvertGameObjectHierarchy(
+            //    Resources.Load("Prefabs/Rocket") as GameObject, World.Active);
 
-            player = GameObjectConversionUtility.ConvertGameObjectHierarchy(
+            playerPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(
                 Resources.Load("Player1") as GameObject, World.Active);
 
-            networkServerSystem = World.GetOrCreateSystem<NetworkServerNewSystem>();
+            networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
         }
 
         protected override void OnUpdate()
         {
-            var entity = spawnPlayerQuery.GetSingletonEntity();
-
+            var entity = GetSingletonEntity<SpawnPlayerServer>();
             var buffer = EntityManager.GetBuffer<SpawnPlayerBuffer>(entity);
             if (buffer.Length == 0)
                 return;
@@ -44,10 +40,9 @@ namespace Assets.Scripts.ECS
             for (int i = 0; i < array.Length; ++i)
             {
                 var playerBuffer = array[i];
-
                
                 //创建Player
-                var e = EntityManager.Instantiate(player);
+                var e = EntityManager.Instantiate(playerPrefab);
 
                 var id = networkServerSystem.RegisterEntity(0, playerBuffer.playerId, e);
 
@@ -57,10 +52,10 @@ namespace Assets.Scripts.ECS
                 EntityManager.SetComponentData(e, position);
                 EntityManager.SetComponentData(e, rotation);
                 EntityManager.AddComponentData(e, new Player() { playerId = playerBuffer.playerId, id = id });
-                EntityManager.AddComponentData(e, new Attack() { Power = 10000 });
-                EntityManager.AddComponentData(e, new Damage());
-                EntityManager.AddComponentData(e, new Health() { Value = 30 });
-                EntityManager.AddComponentData(e, new Score() { ScoreValue = 0, MaxScoreValue = 10 });
+             //   EntityManager.AddComponentData(e, new Attack() { Power = 10000 });
+              //  EntityManager.AddComponentData(e, new Damage());
+              //  EntityManager.AddComponentData(e, new Health() { Value = 30 });
+             //   EntityManager.AddComponentData(e, new Score() { ScoreValue = 0, MaxScoreValue = 10 });
 				EntityManager.AddComponentData(e, new CharacterDataComponent()
 				{
 					SkinWidth = 0.02f,
@@ -88,10 +83,18 @@ namespace Assets.Scripts.ECS
 
                 });
 
-                EntityManager.AddComponentData(e, new EntityPredictData()
+                EntityManager.AddComponentData(e, new CharacterInterpolateState()
                 {
                     position = position.Value,
                     rotation = rotation.Value
+
+                });
+
+                EntityManager.AddComponentData(e, new CharacterPredictState()
+                {
+                    position = position.Value,
+                    rotation = rotation.Value,
+                    pickupEntity = Entity.Null             
 
                 });
 

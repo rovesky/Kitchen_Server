@@ -9,7 +9,7 @@ namespace Assets.Scripts.ECS
 	public class KitchenServerSimulationSystemGroup : ComponentSystemGroup
     {
         private GameWorld gameWorld;
-        private NetworkServerNewSystem networkServerSystem;
+        private NetworkServerSystem networkServerSystem;
         private double nextTickTime = 0;
         private System.Random random;
         private long simStartTime;
@@ -23,20 +23,23 @@ namespace Assets.Scripts.ECS
           
             GameWorld.Active = new GameWorld();
             gameWorld = GameWorld.Active;
-            networkServerSystem = World.GetOrCreateSystem<NetworkServerNewSystem>();
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<HandleCommandSystem>());
+            networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<HandleCommandsSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerServerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlatesSystem>());
 
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<PickupSystem>());
-           // m_systemsToUpdate.Add(World.GetOrCreateSystem<ReleaseItemSystem>());
-            //m_systemsToUpdate.Add(World.GetOrCreateSystem<ThrowSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterMoveSystem>());
-			m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterTriggerSystem>());
-			m_systemsToUpdate.Add(World.GetOrCreateSystem<TriggerOperationSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictUpdateSystemGroup>());
 
-			m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyPresentationSystem>());
+            //   m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterMoveSystem>());
+            //	m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterTriggerSystem>());
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<PickupSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<TriggerOperationSystem>());
+
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateCharPresentationSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyCharPresentationSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ItemStateServerSystem>());
 

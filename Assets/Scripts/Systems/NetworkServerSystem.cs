@@ -7,10 +7,10 @@ using Unity.Transforms;
 namespace Assets.Scripts.ECS
 {
     [DisableAutoCreation]
-    public class NetworkServerNewSystem : FSComponentSystem, INetworkCallbacks, ISnapshotGenerator,IClientCommandProcessor
+    public class NetworkServerSystem : ComponentSystem, INetworkCallbacks, ISnapshotGenerator,IClientCommandProcessor
     {
 
-        private HandleCommandSystem handleCommandSystem;
+        private HandleCommandsSystem handleCommandSystem;
 
         private Dictionary<int, Entity> entities = new Dictionary<int, Entity>();
 
@@ -110,7 +110,7 @@ namespace Assets.Scripts.ECS
                 writer.WriteInt32("id", player.id);
                 writer.WriteInt32("playerId", player.playerId);
 
-                var entityPredictData = EntityManager.GetComponentData<EntityPredictData>(entity);
+                var entityPredictData = EntityManager.GetComponentData<CharacterPredictState>(entity);
                 writer.WriteVector3Q("pos", entityPredictData.position);
                 writer.WriteQuaternionQ("rotation", entityPredictData.rotation);
 
@@ -121,14 +121,6 @@ namespace Assets.Scripts.ECS
                     id = EntityManager.GetComponentData<Plate>(entityPredictData.pickupEntity).id;
                 writer.WriteInt32("pickupEntity", id);
 
-         //       FSLog.Info($"pickupEntity:{id}");
-
-                var health = EntityManager.GetComponentData<Health>(entity);
-                writer.WriteInt32("health", health.Value);
-
-                var score = EntityManager.GetComponentData<Score>(entity);
-                writer.WriteInt32("score", score.ScoreValue);
-                writer.WriteInt32("maxScore", score.MaxScoreValue);
             }
             else if (EntityManager.HasComponent<Plate>(entity))
             {
@@ -146,11 +138,7 @@ namespace Assets.Scripts.ECS
                 else
                     id = EntityManager.GetComponentData<Player>(itemState.owner).id;
                 writer.WriteInt32("owner", id);
-
-                //var position = EntityManager.GetComponentData<Translation>(entity);
-                //writer.WriteVector3Q("pos", position.Value);
-                //var rotation = EntityManager.GetComponentData<Rotation>(entity);
-                //writer.WriteQuaternionQ("rotation", rotation.Value);
+             
             }
         }
 

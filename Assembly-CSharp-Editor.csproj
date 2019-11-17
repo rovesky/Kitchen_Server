@@ -688,10 +688,6 @@
       <Project>{CAF937EE-4CC8-9BC2-367D-95A161F934E8}</Project>
       <Name>Unity.Entities.Properties</Name>
     </ProjectReference>
-    <ProjectReference Include="FootStone.TankShared.csproj">
-      <Project>{DCF8A6D9-0F13-707F-B15D-F1430D615E0B}</Project>
-      <Name>FootStone.TankShared</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Entities.Editor.csproj">
       <Project>{273D30D3-84D9-E3DD-ED79-D29C0B35D4FA}</Project>
       <Name>Unity.Entities.Editor</Name>
@@ -743,6 +739,10 @@
     <ProjectReference Include="Unity.Transforms.Hybrid.csproj">
       <Project>{8BF910A2-E44F-C46C-124D-361D4E17CF2A}</Project>
       <Name>Unity.Transforms.Hybrid</Name>
+    </ProjectReference>
+    <ProjectReference Include="FootStone.TankShared.csproj">
+      <Project>{DCF8A6D9-0F13-707F-B15D-F1430D615E0B}</Project>
+      <Name>FootStone.TankShared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

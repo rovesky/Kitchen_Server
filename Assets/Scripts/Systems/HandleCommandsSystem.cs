@@ -4,9 +4,8 @@ using Unity.Entities;
 namespace Assets.Scripts.ECS
 {
     [DisableAutoCreation]
-    public class HandleCommandSystem : FSComponentSystem
-    {
-       
+    public class HandleCommandsSystem : ComponentSystem
+    {      
 
         protected override void OnCreate()
         {

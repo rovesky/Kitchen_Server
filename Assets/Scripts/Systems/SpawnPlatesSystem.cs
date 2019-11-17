@@ -10,7 +10,7 @@ namespace Assets.Scripts.ECS
     public class SpawnPlatesSystem : ComponentSystem
     {
         private Entity platePrefab;
-        private NetworkServerNewSystem networkServerSystem;
+        private NetworkServerSystem networkServerSystem;
         private bool isSpawned = false;
 
         protected override void OnCreate()
@@ -20,7 +20,7 @@ namespace Assets.Scripts.ECS
             platePrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(
             Resources.Load("Plate") as GameObject, World.Active);
 
-            networkServerSystem = World.GetOrCreateSystem<NetworkServerNewSystem>();
+            networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
 
         }
 

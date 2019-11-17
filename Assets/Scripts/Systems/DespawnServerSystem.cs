@@ -11,13 +11,13 @@ using UnityEngine;
 namespace Assets.Scripts.ECS
 {
     [DisableAutoCreation]
-    public class DespawnServerSystem : FSComponentSystem
+    public class DespawnServerSystem : ComponentSystem
     {
-        private NetworkServerNewSystem networkServerNewSystem;
+        private NetworkServerSystem networkServerNewSystem;
 
         protected override void OnCreate()
         {
-            networkServerNewSystem = World.GetOrCreateSystem<NetworkServerNewSystem>();
+            networkServerNewSystem = World.GetOrCreateSystem<NetworkServerSystem>();
         }
 
         protected override void OnUpdate()
