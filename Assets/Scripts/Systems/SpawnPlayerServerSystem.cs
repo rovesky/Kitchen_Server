@@ -9,7 +9,7 @@ namespace Assets.Scripts.ECS
     [DisableAutoCreation]
     public class SpawnPlayerServerSystem : ComponentSystem
     {
-     //   private Entity rocket;
+  
         private Entity playerPrefab;
         private NetworkServerSystem networkServerSystem;
         protected override void OnCreate()
@@ -17,9 +17,7 @@ namespace Assets.Scripts.ECS
              var entity = EntityManager.CreateEntity(typeof(SpawnPlayerServer));
              SetSingleton(new SpawnPlayerServer());
              EntityManager.AddBuffer<SpawnPlayerBuffer>(entity);
-
-            //rocket = GameObjectConversionUtility.ConvertGameObjectHierarchy(
-            //    Resources.Load("Prefabs/Rocket") as GameObject, World.Active);
+       
 
             playerPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(
                 Resources.Load("Player1") as GameObject, World.Active);
@@ -51,11 +49,7 @@ namespace Assets.Scripts.ECS
                 
                 EntityManager.SetComponentData(e, position);
                 EntityManager.SetComponentData(e, rotation);
-                EntityManager.AddComponentData(e, new Player() { playerId = playerBuffer.playerId, id = id });
-             //   EntityManager.AddComponentData(e, new Attack() { Power = 10000 });
-              //  EntityManager.AddComponentData(e, new Damage());
-              //  EntityManager.AddComponentData(e, new Health() { Value = 30 });
-             //   EntityManager.AddComponentData(e, new Score() { ScoreValue = 0, MaxScoreValue = 10 });
+                EntityManager.AddComponentData(e, new Player() { playerId = playerBuffer.playerId, id = id });           
 				EntityManager.AddComponentData(e, new CharacterDataComponent()
 				{
 					SkinWidth = 0.02f,
