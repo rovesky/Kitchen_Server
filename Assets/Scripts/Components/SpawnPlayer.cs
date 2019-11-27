@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using Unity.Collections;
-using Unity.Entities;
-using UnityEngine;
+﻿using Unity.Entities;
 
 namespace Assets.Scripts.ECS
 {
     [InternalBufferCapacity(16)]
     public struct SpawnPlayerBuffer : IBufferElementData
     {
-        public int playerId;
-        public int connectionId;
+        public int PlayerId;
+        public int ConnectionId;
     }
 
-    [Serializable]
     public struct SpawnPlayerServer : IComponentData
-    {    
-
+    {
     }
-
 }

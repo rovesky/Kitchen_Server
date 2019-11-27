@@ -8,10 +8,10 @@ namespace Assets.Scripts.ECS
 	[UpdateAfter(typeof(ExportPhysicsWorld)), UpdateBefore(typeof(EndFramePhysicsSystem))]
 	public class KitchenServerSimulationSystemGroup : ComponentSystemGroup
     {
-        private GameWorld gameWorld;
+      //  private GameWorld gameWorld;
         private NetworkServerSystem networkServerSystem;
         private double nextTickTime = 0;
-        private System.Random random;
+     //   private System.Random random;
         private long simStartTime;
         private uint simStartTimeTick;
         private float lastSimTime;
@@ -19,10 +19,10 @@ namespace Assets.Scripts.ECS
         protected override void OnCreate()
         {
             ConfigVar.Init();
-            random = new System.Random();
+          //  random = new System.Random();
           
             GameWorld.Active = new GameWorld();
-            gameWorld = GameWorld.Active;
+        //    gameWorld = GameWorld.Active;
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HandleCommandsSystem>());
 
@@ -75,11 +75,11 @@ namespace Assets.Scripts.ECS
             simStartTimeTick = worldTime.Tick;
 
             networkServerSystem.Update();
-              
-            int tickCount = 0;
+
+            //   int tickCount = 0;
             while (worldTime.frameTime > nextTickTime)
             {
-                tickCount++;
+                //    tickCount++;
                 ServerTick();
                 //  if (gameWorld.Tick % 10 == 0)
                 //    Thread.Sleep(random.Next(30, 100));
@@ -87,9 +87,9 @@ namespace Assets.Scripts.ECS
                 nextTickTime += worldTime.gameTick.TickInterval;
             }
 
-            float remainTime = (float)(nextTickTime - worldTime.frameTime);
+            var remainTime = (float) (nextTickTime - worldTime.frameTime);
 
-            int rate = worldTime.gameTick.TickRate;
+            var rate = worldTime.gameTick.TickRate;
             if (remainTime > 0.75f * worldTime.gameTick.TickInterval)
                 rate -= 2;
             else if (remainTime < 0.25f * worldTime.gameTick.TickInterval)

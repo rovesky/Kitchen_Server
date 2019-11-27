@@ -7,11 +7,7 @@ namespace Assets.Scripts.ECS
     public class HandleCommandsSystem : ComponentSystem
     {      
 
-        protected override void OnCreate()
-        {
-            base.OnCreate();          
-
-        }
+       
 
         protected override void OnDestroy()
         {

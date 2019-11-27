@@ -1,12 +1,4 @@
-﻿using FootStone.ECS;
-using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.Entities;
-using UnityEngine;
+﻿using Unity.Entities;
 
 namespace Assets.Scripts.ECS
 {
@@ -28,19 +20,12 @@ namespace Assets.Scripts.ECS
                 {
                     var id = -1;
                     if (EntityManager.HasComponent<Player>(entity))
-                    {
                         id = EntityManager.GetComponentData<Player>(entity).id;
-
-                    }
                     else if (EntityManager.HasComponent<Enemy>(entity))
-                    {
                         id = EntityManager.GetComponentData<Enemy>(entity).id;
-                    }
-                    if(id != -1)
+                    if (id != -1)
                         networkServerNewSystem.UnRegisterEntity(id);
                 }
-
-
             });
         }
     }
