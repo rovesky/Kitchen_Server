@@ -74,13 +74,13 @@ namespace Assets.Scripts.ECS
                 writer.WriteInt32("PlayerId", player.playerId);
 
                 var entityPredictData = EntityManager.GetComponentData<CharacterPredictState>(entity);
-                writer.WriteVector3Q("pos", entityPredictData.position);
-                writer.WriteQuaternionQ("rotation", entityPredictData.rotation);
+                writer.WriteVector3Q("pos", entityPredictData.Position);
+                writer.WriteQuaternionQ("rotation", entityPredictData.Rotation);
 
                 var id = -1;
-                if (entityPredictData.pickupEntity != Entity.Null &&
-                    EntityManager.HasComponent<Plate>(entityPredictData.pickupEntity))
-                    id = EntityManager.GetComponentData<Plate>(entityPredictData.pickupEntity).id;
+                if (entityPredictData.PickupedEntity != Entity.Null &&
+                    EntityManager.HasComponent<Plate>(entityPredictData.PickupedEntity))
+                    id = EntityManager.GetComponentData<Plate>(entityPredictData.PickupedEntity).id;
                 writer.WriteInt32("pickupEntity", id);
             }
             else if (EntityManager.HasComponent<Plate>(entity))

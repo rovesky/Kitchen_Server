@@ -7,13 +7,6 @@ namespace Assets.Scripts.ECS
     public class HandleCommandsSystem : ComponentSystem
     {      
 
-       
-
-        protected override void OnDestroy()
-        {
-          
-        }
-
         protected  override void OnUpdate()
         {
             var tick = GetSingleton<WorldTime>().Tick;
@@ -24,7 +17,7 @@ namespace Assets.Scripts.ECS
                     return;           
 
 
-                int removeCount = 0;               
+                var removeCount = 0;               
                 for (var i = 0; i < buffer.Length; ++i)
                 {
                     if (buffer[i].command.checkTick <= tick)
@@ -42,9 +35,9 @@ namespace Assets.Scripts.ECS
         }
 
       
-        public void AddCommand(int id, UserCommand command)
-        {
+        //public void AddCommand(int id, UserCommand command)
+        //{
 
-        }
+        //}
     }
 }

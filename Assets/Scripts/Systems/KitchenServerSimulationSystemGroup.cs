@@ -8,10 +8,9 @@ namespace Assets.Scripts.ECS
 	[UpdateAfter(typeof(ExportPhysicsWorld)), UpdateBefore(typeof(EndFramePhysicsSystem))]
 	public class KitchenServerSimulationSystemGroup : ComponentSystemGroup
     {
-      //  private GameWorld gameWorld;
+
         private NetworkServerSystem networkServerSystem;
-        private double nextTickTime = 0;
-     //   private System.Random random;
+        private double nextTickTime;
         private long simStartTime;
         private uint simStartTimeTick;
         private float lastSimTime;
@@ -19,10 +18,8 @@ namespace Assets.Scripts.ECS
         protected override void OnCreate()
         {
             ConfigVar.Init();
-          //  random = new System.Random();
-          
             GameWorld.Active = new GameWorld();
-        //    gameWorld = GameWorld.Active;
+
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HandleCommandsSystem>());
 
@@ -31,17 +28,14 @@ namespace Assets.Scripts.ECS
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictUpdateSystemGroup>());
 
-            //   m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterMoveSystem>());
-            //	m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterTriggerSystem>());
+         
             m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterTriggerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PickupSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<TriggerOperationSystem>());
 
-
             m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateCharPresentationSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyCharPresentationSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ClientTriggerProcessSystem>());
-
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ItemStateServerSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnServerSystem>());
@@ -59,10 +53,10 @@ namespace Assets.Scripts.ECS
         private void ServerTick()
         {
             var worldTime = GetSingleton<WorldTime>();
-            worldTime.gameTick.Tick++;
-            worldTime.gameTick.TickDuration = worldTime.gameTick.TickInterval;
+            worldTime.GameTick.Tick++;
+            worldTime.GameTick.TickDuration = worldTime.GameTick.TickInterval;
             //     worldTime.tick.FrameDuration = worldTime.tick.TickInterval;
-            networkServerSystem.HandleClientCommands((int)worldTime.gameTick.Tick);
+            networkServerSystem.HandleClientCommands((int)worldTime.GameTick.Tick);
             SetSingleton(worldTime);
             base.OnUpdate();
         }
@@ -77,22 +71,22 @@ namespace Assets.Scripts.ECS
             networkServerSystem.Update();
 
             //   int tickCount = 0;
-            while (worldTime.frameTime > nextTickTime)
+            while (worldTime.FrameTime > nextTickTime)
             {
                 //    tickCount++;
                 ServerTick();
                 //  if (gameWorld.Tick % 10 == 0)
                 //    Thread.Sleep(random.Next(30, 100));
                 networkServerSystem.GenerateSnapshot(lastSimTime);
-                nextTickTime += worldTime.gameTick.TickInterval;
+                nextTickTime += worldTime.GameTick.TickInterval;
             }
 
-            var remainTime = (float) (nextTickTime - worldTime.frameTime);
+            var remainTime = (float) (nextTickTime - worldTime.FrameTime);
 
-            var rate = worldTime.gameTick.TickRate;
-            if (remainTime > 0.75f * worldTime.gameTick.TickInterval)
+            var rate = worldTime.GameTick.TickRate;
+            if (remainTime > 0.75f * worldTime.GameTick.TickInterval)
                 rate -= 2;
-            else if (remainTime < 0.25f * worldTime.gameTick.TickInterval)
+            else if (remainTime < 0.25f * worldTime.GameTick.TickInterval)
                 rate += 2;
 
             Application.targetFrameRate = rate;
