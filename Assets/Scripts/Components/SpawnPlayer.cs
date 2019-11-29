@@ -1,6 +1,6 @@
 ﻿using Unity.Entities;
 
-namespace Assets.Scripts.ECS
+namespace FootStone.Kitchen
 {
     [InternalBufferCapacity(16)]
     public struct SpawnPlayerBuffer : IBufferElementData

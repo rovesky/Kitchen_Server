@@ -1,7 +1,7 @@
 ﻿using FootStone.ECS;
 using Unity.Entities;
 
-namespace Assets.Scripts.ECS
+namespace FootStone.Kitchen
 {
     [DisableAutoCreation]
     public class HandleCommandsSystem : ComponentSystem

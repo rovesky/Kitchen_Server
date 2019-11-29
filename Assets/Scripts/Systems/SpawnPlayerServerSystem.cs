@@ -1,9 +1,10 @@
-﻿using Unity.Collections;
+﻿using FootStone.ECS;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
 
-namespace Assets.Scripts.ECS
+namespace FootStone.Kitchen
 {
     [DisableAutoCreation]
     public class SpawnPlayerServerSystem : ComponentSystem
@@ -35,32 +36,30 @@ namespace Assets.Scripts.ECS
             var array = buffer.ToNativeArray(Allocator.Temp);
             buffer.Clear();
 
-            foreach (var playerBuffer in array)
+            foreach (var spawnPlayer in array)
             {
-             //   var playerBuffer = array[i];
-
                 //创建Player
                 var e = EntityManager.Instantiate(playerPrefab);
-
-                var id = networkServerSystem.RegisterEntity(0, playerBuffer.PlayerId, e);
-
+           
                 var position = new Translation {Value = {x = 0, y = 1, z = -5}};
                 var rotation = new Rotation {Value = Quaternion.identity};
 
                 EntityManager.SetComponentData(e, position);
                 EntityManager.SetComponentData(e, rotation);
-                EntityManager.AddComponentData(e, new Player {playerId = playerBuffer.PlayerId, id = id});
+
+                EntityManager.AddComponentData(e, new ReplicatedEntityData()
+                {
+                    Id = -1,
+                    PredictingPlayerId = spawnPlayer.PlayerId
+                });
+
+                EntityManager.AddComponentData(e, new Player());
                 EntityManager.AddComponentData(e, new CharacterMove
                 {
                     SkinWidth = 0.02f,
                     Velocity = 6.0f
                 });
 
-
-                //EntityManager.AddComponentData(e, new MoveInput
-                //{
-                //    Speed = 6
-                //});
 
                 EntityManager.AddComponentData(e, new UserCommand
                 {
@@ -71,17 +70,17 @@ namespace Assets.Scripts.ECS
 
                 EntityManager.AddComponentData(e, new Connection
                 {
-                    id = playerBuffer.PlayerId,
-                    sessionId = playerBuffer.PlayerId
+                    id = spawnPlayer.PlayerId,
+                    sessionId = spawnPlayer.PlayerId
                 });
 
-                EntityManager.AddComponentData(e, new CharacterInterpolateState
+                EntityManager.AddComponentData(e, new CharacterInterpolatedState
                 {
                     Position = position.Value,
                     Rotation = rotation.Value
                 });
 
-                EntityManager.AddComponentData(e, new CharacterPredictState
+                EntityManager.AddComponentData(e, new CharacterPredictedState
                 {
                     Position = position.Value,
                     Rotation = rotation.Value,
@@ -94,6 +93,13 @@ namespace Assets.Scripts.ECS
                 {
                     speed = 14
                 });
+
+                var id = networkServerSystem.RegisterEntity(0, spawnPlayer.PlayerId, e);
+
+                var replicatedEntityData = EntityManager.GetComponentData<ReplicatedEntityData>(e);
+                replicatedEntityData.Id = id;
+                EntityManager.SetComponentData(e, replicatedEntityData);
+
             }
 
             array.Dispose();

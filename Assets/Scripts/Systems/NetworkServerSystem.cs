@@ -2,16 +2,17 @@
 using FootStone.ECS;
 using Unity.Entities;
 
-namespace Assets.Scripts.ECS
+namespace FootStone.Kitchen
 {
     [DisableAutoCreation]
     public class NetworkServerSystem : ComponentSystem, INetworkCallbacks, ISnapshotGenerator, IClientCommandProcessor
     {
-        private readonly Dictionary<int, Entity> entities = new Dictionary<int, Entity>();
+     //   private readonly Dictionary<int, Entity> entities = new Dictionary<int, Entity>();
 
         private HandleCommandsSystem handleCommandSystem;
 
         private NetworkServer network;
+        private ReplicatedEntityCollection replicatedEntityCollection;
 
         public void ProcessCommand(int connectionId, int tick, ref NetworkReader data)
         {
@@ -65,44 +66,46 @@ namespace Assets.Scripts.ECS
 
         public void GenerateEntitySnapshot(int entityId, ref NetworkWriter writer)
         {
-            var entity = entities[entityId];
+            //var entity = entities[entityId];
 
-            if (EntityManager.HasComponent<Player>(entity))
-            {
-                var player = EntityManager.GetComponentData<Player>(entity);
-                writer.WriteInt32("id", player.id);
-                writer.WriteInt32("PlayerId", player.playerId);
+            //if (EntityManager.HasComponent<Player>(entity))
+            //{
+            //    var player = EntityManager.GetComponentData<Player>(entity);
+            // //   writer.WriteInt32("id", player.Id);
+            ////    writer.WriteInt32("PlayerId", player.playerId);
 
-                var entityPredictData = EntityManager.GetComponentData<CharacterPredictState>(entity);
-                writer.WriteVector3Q("pos", entityPredictData.Position);
-                writer.WriteQuaternionQ("rotation", entityPredictData.Rotation);
+            //    var entityPredictData = EntityManager.GetComponentData<CharacterPredictedState>(entity);
+            //    writer.WriteVector3Q("pos", entityPredictData.Position);
+            //    writer.WriteQuaternionQ("rotation", entityPredictData.Rotation);
 
-                var id = -1;
-                if (entityPredictData.PickupedEntity != Entity.Null &&
-                    EntityManager.HasComponent<Plate>(entityPredictData.PickupedEntity))
-                    id = EntityManager.GetComponentData<Plate>(entityPredictData.PickupedEntity).id;
-                writer.WriteInt32("pickupEntity", id);
-            }
-            else if (EntityManager.HasComponent<Plate>(entity))
-            {
-                //FSLog.Info($"GenerateEntitySnapshot Plate:{entityId}");
-                var plate = EntityManager.GetComponentData<Plate>(entity);
-                writer.WriteInt32("id", plate.id);
+            //    var id = -1;
+            //    if (entityPredictData.PickupedEntity != Entity.Null &&
+            //        EntityManager.HasComponent<Plate>(entityPredictData.PickupedEntity))
+            ////        id = EntityManager.GetComponentData<Plate>(entityPredictData.PickupedEntity).id;
+            //    writer.WriteInt32("pickupEntity", id);
+            //}
+            //else if (EntityManager.HasComponent<Plate>(entity))
+            //{
+            //    //FSLog.Info($"GenerateEntitySnapshot Plate:{entityId}");
+            //    var plate = EntityManager.GetComponentData<Plate>(entity);
+            // //   writer.WriteInt32("id", plate.id);
 
-                var itemState = EntityManager.GetComponentData<ItemInterpolatedState>(entity);
-                writer.WriteVector3Q("pos", itemState.position);
-                writer.WriteQuaternionQ("rotation", itemState.rotation);
+            //    var itemState = EntityManager.GetComponentData<ItemInterpolatedState>(entity);
+            //    writer.WriteVector3Q("pos", itemState.position);
+            //    writer.WriteQuaternionQ("rotation", itemState.rotation);
 
-                var id = -1;
-                if (itemState.owner != Entity.Null && EntityManager.HasComponent<Player>(itemState.owner))
-                    id = EntityManager.GetComponentData<Player>(itemState.owner).id;
-                writer.WriteInt32("owner", id);
-            }
+            //    //var id = -1;
+            //    //if (itemState.owner != Entity.Null && EntityManager.HasComponent<Player>(itemState.owner))
+            //    //    id = EntityManager.GetComponentData<Player>(itemState.owner).id;
+            //    //writer.WriteInt32("owner", id);
+            //}
+
+            replicatedEntityCollection.GenerateEntitySnapshot(entityId,ref writer);
         }
 
         public string GenerateEntityName(int entityId)
         {
-            return entityId.ToString();
+            return replicatedEntityCollection.GenerateName(entityId);
         }
 
         protected override void OnCreate()
@@ -110,8 +113,9 @@ namespace Assets.Scripts.ECS
             base.OnCreate();
 
             network = new NetworkServer(GameWorld.Active);
-
             network.InitializeMap((ref NetworkWriter data) => { data.WriteString("name", "plane"); });
+
+            replicatedEntityCollection = new ReplicatedEntityCollection(EntityManager);
 
             FSLog.Info("server listening on 1001!");
         }
@@ -143,14 +147,16 @@ namespace Assets.Scripts.ECS
         public int RegisterEntity(ushort typeId, int predictingClientId, Entity entity)
         {
             var id = network.RegisterEntity(-1, typeId, predictingClientId);
-            entities[id] = entity;
+            replicatedEntityCollection.Register(id, entity);
+            //   entities[id] = entity;
             return id;
         }
 
         public void UnRegisterEntity(int id)
         {
             network.UnregisterEntity(id);
-            entities.Remove(id);
+            replicatedEntityCollection.Unregister(id);
+            //  entities.Remove(id);
         }
 
         public void HandleClientCommands(int tick)

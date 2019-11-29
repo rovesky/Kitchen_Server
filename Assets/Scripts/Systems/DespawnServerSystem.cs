@@ -1,7 +1,7 @@
 ﻿using FootStone.ECS;
 using Unity.Entities;
 
-namespace Assets.Scripts.ECS
+namespace FootStone.Kitchen
 {
     [DisableAutoCreation]
     public class DespawnServerSystem : ComponentSystem
@@ -20,8 +20,8 @@ namespace Assets.Scripts.ECS
                 if (despawn.Frame <= 0)
                 {
                     var id = -1;
-                    if (EntityManager.HasComponent<Player>(entity))
-                        id = EntityManager.GetComponentData<Player>(entity).id;
+                    if (EntityManager.HasComponent<ReplicatedEntityData>(entity))
+                        id = EntityManager.GetComponentData<ReplicatedEntityData>(entity).Id;
                     //else if (EntityManager.HasComponent<Enemy>(entity))
                     //    id = EntityManager.GetComponentData<Enemy>(entity).id;
                     if (id != -1)

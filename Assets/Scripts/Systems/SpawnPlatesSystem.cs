@@ -1,9 +1,10 @@
-﻿using Unity.Collections;
+﻿using FootStone.ECS;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
 
-namespace Assets.Scripts.ECS
+namespace FootStone.Kitchen
 {
     [DisableAutoCreation]
     public class SpawnPlatesSystem : ComponentSystem
@@ -46,18 +47,31 @@ namespace Assets.Scripts.ECS
                 EntityManager.SetComponentData(e, position);
                 EntityManager.SetComponentData(e, rotation);
 
-                var id = networkServerSystem.RegisterEntity(1, -1, e);
-                EntityManager.AddComponentData(e, new Plate {id = id, IsFree = false});
+                EntityManager.AddComponentData(e, new ReplicatedEntityData()
+                {
+                    Id = -1,
+                    PredictingPlayerId = -1
+                });
+
+                EntityManager.AddComponentData(e, new Plate {IsFree = false});
 
                 slot.FiltInEntity = e;
                 EntityManager.SetComponentData(entity, slot);
 
                 EntityManager.AddComponentData(e, new ItemInterpolatedState
                 {
-                    position = position.Value,
-                    rotation = Quaternion.identity,
-                    owner = Entity.Null
+                    Position = position.Value,
+                    Rotation = Quaternion.identity,
+                    Owner = Entity.Null
                 });
+
+               
+                var id = networkServerSystem.RegisterEntity(1, -1, e);
+
+                var replicatedEntityData = EntityManager.GetComponentData<ReplicatedEntityData>(e);
+                replicatedEntityData.Id = id;
+                EntityManager.SetComponentData(e, replicatedEntityData);
+
             }
 
             entities.Dispose();

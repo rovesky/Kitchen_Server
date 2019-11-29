@@ -3,10 +3,10 @@ using Unity.Entities;
 using Unity.Physics.Systems;
 using UnityEngine;
 
-namespace Assets.Scripts.ECS
+namespace FootStone.Kitchen
 {
 	[UpdateAfter(typeof(ExportPhysicsWorld)), UpdateBefore(typeof(EndFramePhysicsSystem))]
-	public class KitchenServerSimulationSystemGroup : ComponentSystemGroup
+	public class KitchenServerSimulationSystemGroup : NoSortComponentSystemGroup
     {
 
         private NetworkServerSystem networkServerSystem;
@@ -42,13 +42,6 @@ namespace Assets.Scripts.ECS
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnSystem>());            
         }
 
-        /// <summary>
-        /// 不需要排序
-        /// </summary>
-        public override void SortSystemUpdateList()
-        {
-
-        }
 
         private void ServerTick()
         {
