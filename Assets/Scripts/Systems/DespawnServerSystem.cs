@@ -22,8 +22,6 @@ namespace FootStone.Kitchen
                     var id = -1;
                     if (EntityManager.HasComponent<ReplicatedEntityData>(entity))
                         id = EntityManager.GetComponentData<ReplicatedEntityData>(entity).Id;
-                    //else if (EntityManager.HasComponent<Enemy>(entity))
-                    //    id = EntityManager.GetComponentData<Enemy>(entity).id;
                     if (id != -1)
                         networkServerNewSystem.UnRegisterEntity(id);
                 }

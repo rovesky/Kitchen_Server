@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using FootStone.ECS;
+﻿using FootStone.ECS;
 using Unity.Entities;
 
 namespace FootStone.Kitchen
@@ -7,8 +6,6 @@ namespace FootStone.Kitchen
     [DisableAutoCreation]
     public class NetworkServerSystem : ComponentSystem, INetworkCallbacks, ISnapshotGenerator, IClientCommandProcessor
     {
-     //   private readonly Dictionary<int, Entity> entities = new Dictionary<int, Entity>();
-
         private HandleCommandsSystem handleCommandSystem;
 
         private NetworkServer network;
@@ -66,41 +63,7 @@ namespace FootStone.Kitchen
 
         public void GenerateEntitySnapshot(int entityId, ref NetworkWriter writer)
         {
-            //var entity = entities[entityId];
-
-            //if (EntityManager.HasComponent<Player>(entity))
-            //{
-            //    var player = EntityManager.GetComponentData<Player>(entity);
-            // //   writer.WriteInt32("id", player.Id);
-            ////    writer.WriteInt32("PlayerId", player.playerId);
-
-            //    var entityPredictData = EntityManager.GetComponentData<CharacterPredictedState>(entity);
-            //    writer.WriteVector3Q("pos", entityPredictData.Position);
-            //    writer.WriteQuaternionQ("rotation", entityPredictData.Rotation);
-
-            //    var id = -1;
-            //    if (entityPredictData.PickupedEntity != Entity.Null &&
-            //        EntityManager.HasComponent<Plate>(entityPredictData.PickupedEntity))
-            ////        id = EntityManager.GetComponentData<Plate>(entityPredictData.PickupedEntity).id;
-            //    writer.WriteInt32("pickupEntity", id);
-            //}
-            //else if (EntityManager.HasComponent<Plate>(entity))
-            //{
-            //    //FSLog.Info($"GenerateEntitySnapshot Plate:{entityId}");
-            //    var plate = EntityManager.GetComponentData<Plate>(entity);
-            // //   writer.WriteInt32("id", plate.id);
-
-            //    var itemState = EntityManager.GetComponentData<ItemInterpolatedState>(entity);
-            //    writer.WriteVector3Q("pos", itemState.position);
-            //    writer.WriteQuaternionQ("rotation", itemState.rotation);
-
-            //    //var id = -1;
-            //    //if (itemState.owner != Entity.Null && EntityManager.HasComponent<Player>(itemState.owner))
-            //    //    id = EntityManager.GetComponentData<Player>(itemState.owner).id;
-            //    //writer.WriteInt32("owner", id);
-            //}
-
-            replicatedEntityCollection.GenerateEntitySnapshot(entityId,ref writer);
+            replicatedEntityCollection.GenerateEntitySnapshot(entityId, ref writer);
         }
 
         public string GenerateEntityName(int entityId)
@@ -148,7 +111,6 @@ namespace FootStone.Kitchen
         {
             var id = network.RegisterEntity(-1, typeId, predictingClientId);
             replicatedEntityCollection.Register(id, entity);
-            //   entities[id] = entity;
             return id;
         }
 
@@ -156,7 +118,6 @@ namespace FootStone.Kitchen
         {
             network.UnregisterEntity(id);
             replicatedEntityCollection.Unregister(id);
-            //  entities.Remove(id);
         }
 
         public void HandleClientCommands(int tick)

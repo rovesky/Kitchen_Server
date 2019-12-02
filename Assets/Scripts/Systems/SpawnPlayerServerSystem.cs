@@ -19,7 +19,6 @@ namespace FootStone.Kitchen
             SetSingleton(new SpawnPlayerServer());
             EntityManager.AddBuffer<SpawnPlayerBuffer>(entity);
 
-
             playerPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(
                 Resources.Load("Player1") as GameObject, World.Active);
 
