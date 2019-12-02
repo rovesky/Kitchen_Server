@@ -86,11 +86,11 @@ namespace FootStone.Kitchen
                     PickupedEntity = Entity.Null
                 });
 
-                EntityManager.AddComponentData(e, new PickupItem());
+                EntityManager.AddComponentData(e, new CharacterPickupItem());
 
-                EntityManager.AddComponentData(e, new ThrowItem
+                EntityManager.AddComponentData(e, new CharacterThrowItem
                 {
-                    speed = 14
+                    Velocity = 14.0f
                 });
 
                 var id = networkServerSystem.RegisterEntity(0, spawnPlayer.PlayerId, e);

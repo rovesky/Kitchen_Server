@@ -65,7 +65,15 @@ namespace FootStone.Kitchen
                     Owner = Entity.Null
                 });
 
-               
+
+                EntityManager.AddComponentData(e, new ItemPredictedState
+                {
+                    Position = position.Value,
+                    Rotation = Quaternion.identity,
+                    Owner = Entity.Null
+                });
+
+
                 var id = networkServerSystem.RegisterEntity(1, -1, e);
 
                 var replicatedEntityData = EntityManager.GetComponentData<ReplicatedEntityData>(e);

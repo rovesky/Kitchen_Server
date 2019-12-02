@@ -31,12 +31,16 @@ namespace FootStone.Kitchen
          
             m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterTriggerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PickupSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<TriggerOperationSystem>());
+         //   m_systemsToUpdate.Add(World.GetOrCreateSystem<TriggerOperationSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateCharPresentationSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateItemPresentationSystem>());
+
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyCharPresentationSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyItemPresentationSystem>());
+
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ClientTriggerProcessSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<ItemStateServerSystem>());
+       //     m_systemsToUpdate.Add(World.GetOrCreateSystem<ItemStateServerSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnServerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnSystem>());            
