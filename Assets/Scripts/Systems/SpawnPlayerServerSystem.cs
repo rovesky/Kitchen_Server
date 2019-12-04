@@ -52,11 +52,14 @@ namespace FootStone.Kitchen
                     PredictingPlayerId = spawnPlayer.PlayerId
                 });
 
-                EntityManager.AddComponentData(e, new Player());
+                EntityManager.AddComponentData(e, new Character()
+                {
+                    PresentationEntity = Entity.Null
+                });
                 EntityManager.AddComponentData(e, new CharacterMove
                 {
                     SkinWidth = 0.02f,
-                    Velocity = 6.0f
+                    Velocity = 7.0f
                 });
 
 
