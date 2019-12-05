@@ -9,3 +9,6 @@
 /Packages/com.unity.entities@0.1.1-preview
 /*.csproj
 /*.sln
+/Packages
+/Assembly-CSharp.csproj.user
+/Server.sln.DotSettings.user

@@ -40,68 +40,23 @@ namespace FootStone.Kitchen
                 //创建Player
                 var e = EntityManager.Instantiate(playerPrefab);
            
-                var position = new Translation {Value = {x = 0, y = 1, z = -5}};
-                var rotation = new Rotation {Value = Quaternion.identity};
+                var position = new Vector3(){x = 0, y = 1, z = -5};
+                var rotation = Quaternion.identity;
 
-                EntityManager.SetComponentData(e, position);
-                EntityManager.SetComponentData(e, rotation);
-
-                EntityManager.AddComponentData(e, new ReplicatedEntityData()
-                {
-                    Id = -1,
-                    PredictingPlayerId = spawnPlayer.PlayerId
-                });
-
-                EntityManager.AddComponentData(e, new Character()
-                {
-                    PresentationEntity = Entity.Null
-                });
-                EntityManager.AddComponentData(e, new CharacterMove
-                {
-                    SkinWidth = 0.02f,
-                    Velocity = 7.0f
-                });
-
-
-                EntityManager.AddComponentData(e, new UserCommand
-                {
-                    renderTick = 0,
-                    targetPos = Vector3.zero
-                });
+                CreateEntityUtilities.CreateCharacterComponent(EntityManager,e,position,rotation);
+                
                 EntityManager.AddBuffer<UserCommandBuffer>(e);
-
                 EntityManager.AddComponentData(e, new Connection
                 {
-                    id = spawnPlayer.PlayerId,
-                    sessionId = spawnPlayer.PlayerId
-                });
-
-                EntityManager.AddComponentData(e, new CharacterInterpolatedState
-                {
-                    Position = position.Value,
-                    Rotation = rotation.Value
-                });
-
-                EntityManager.AddComponentData(e, new CharacterPredictedState
-                {
-                    Position = position.Value,
-                    Rotation = rotation.Value,
-                    PickupedEntity = Entity.Null
-                });
-
-                EntityManager.AddComponentData(e, new CharacterPickupItem());
-
-                EntityManager.AddComponentData(e, new CharacterThrowItem
-                {
-                    Velocity = 14.0f
+                    SessionId = spawnPlayer.PlayerId
                 });
 
                 var id = networkServerSystem.RegisterEntity(0, spawnPlayer.PlayerId, e);
-
-                var replicatedEntityData = EntityManager.GetComponentData<ReplicatedEntityData>(e);
-                replicatedEntityData.Id = id;
-                EntityManager.SetComponentData(e, replicatedEntityData);
-
+                EntityManager.SetComponentData(e, new ReplicatedEntityData()
+                {
+                    Id = id,
+                    PredictingPlayerId = spawnPlayer.PlayerId
+                });
             }
 
             array.Dispose();

@@ -15,7 +15,7 @@ namespace FootStone.Kitchen
         {
             var serverTick = GetSingleton<WorldTime>().Tick;
             var commandBuffer = new UserCommandBuffer();
-            commandBuffer.command.Deserialize(ref data);
+            commandBuffer.Command.Deserialize(ref data);
             //  FSLog.Info($"ServerTick:{tick}");
             // FSLog.Debug($"[{inSequence}] server recv data");
             Entities.ForEach((Entity e, ref Connection con /*,ref UserCommand command*/) =>
@@ -23,10 +23,10 @@ namespace FootStone.Kitchen
                 //FSLog.Info($"[{ConnectionId},{con.id}] recv command:{commandBuffer.command.renderTick}," +
                 //      $"{commandBuffer.command.checkTick}," +
                 //      $"{tick}");
-                if (connectionId != con.id)
+                if (connectionId != con.SessionId)
                     return;
 
-                if (commandBuffer.command.checkTick >= serverTick)
+                if (commandBuffer.Command.CheckTick >= serverTick)
                     EntityManager.GetBuffer<UserCommandBuffer>(e).Add(commandBuffer);
                 //   FSLog.Info($"buffer command:{commandBuffer.command.renderTick},{commandBuffer.command.checkTick},{tick}");
                 //     FSLog.Info($"UserCommandBuffer add new {commandBuffer.command.checkTick},{tick}");
@@ -51,7 +51,8 @@ namespace FootStone.Kitchen
 
             Entities.ForEach((Entity entity, ref Connection connection) =>
             {
-                if (clientId == connection.sessionId) EntityManager.AddComponentData(entity, new Despawn {Frame = 0});
+                if (clientId == connection.SessionId)
+                    EntityManager.AddComponentData(entity, new Despawn {Frame = 0});
             });
         }
 

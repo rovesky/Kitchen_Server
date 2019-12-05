@@ -20,13 +20,13 @@ namespace FootStone.Kitchen
                 var removeCount = 0;
                 for (var i = 0; i < buffer.Length; ++i)
                 {
-                    if (buffer[i].command.checkTick <= tick)
+                    if (buffer[i].Command.CheckTick <= tick)
                         removeCount++;
                     //获取当前serverTick的command
-                    if (buffer[i].command.checkTick == tick)
+                    if (buffer[i].Command.CheckTick == tick)
                     {
                         //  FSLog.Info($"use command:{buffer[i].command.renderTick},{buffer[i].command.checkTick},{tick}");
-                        userCommand = buffer[i].command;
+                        userCommand = buffer[i].Command;
                     }
                 }
 
