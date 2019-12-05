@@ -4,12 +4,14 @@ using Unity.Entities;
 namespace FootStone.Kitchen
 {
     [DisableAutoCreation]
-    public class NetworkServerSystem : ComponentSystem, INetworkCallbacks, ISnapshotGenerator, IClientCommandProcessor
+    public class NetworkServerSystem : ComponentSystem, INetworkCallbacks, /*ISnapshotGenerator,*/ IClientCommandProcessor
     {
         private HandleCommandsSystem handleCommandSystem;
 
         private NetworkServer network;
-        private ReplicatedEntityCollection replicatedEntityCollection;
+        private ReplicateEntityServerSystem replicateEntityServerSystem;
+
+        // private ReplicatedEntityCollection replicatedEntityCollection;
 
         public void ProcessCommand(int connectionId, int tick, ref NetworkReader data)
         {
@@ -60,17 +62,9 @@ namespace FootStone.Kitchen
         {
         }
 
-        public int WorldTick => (int) GetSingleton<WorldTime>().Tick;
+      //  public int WorldTick => (int) GetSingleton<WorldTime>().Tick;
 
-        public void GenerateEntitySnapshot(int entityId, ref NetworkWriter writer)
-        {
-            replicatedEntityCollection.GenerateEntitySnapshot(entityId, ref writer);
-        }
-
-        public string GenerateEntityName(int entityId)
-        {
-            return replicatedEntityCollection.GenerateName(entityId);
-        }
+      
 
         protected override void OnCreate()
         {
@@ -79,7 +73,8 @@ namespace FootStone.Kitchen
             network = new NetworkServer(GameWorld.Active);
             network.InitializeMap((ref NetworkWriter data) => { data.WriteString("name", "plane"); });
 
-            replicatedEntityCollection = new ReplicatedEntityCollection(EntityManager);
+            replicateEntityServerSystem = World.GetOrCreateSystem<ReplicateEntityServerSystem>();
+          //  replicatedEntityCollection = new ReplicatedEntityCollection(EntityManager);
 
             FSLog.Info("server listening on 1001!");
         }
@@ -104,21 +99,26 @@ namespace FootStone.Kitchen
 
         public void GenerateSnapshot(float lastSimTime)
         {
-            network.GenerateSnapshot(this, lastSimTime);
+            network.GenerateSnapshot(replicateEntityServerSystem, lastSimTime);
         }
+   
 
-
-        public int RegisterEntity(ushort typeId, int predictingClientId, Entity entity)
+        public int RegisterEntity(int inId,ushort typeId, int predictingClientId,Entity entity)
         {
-            var id = network.RegisterEntity(-1, typeId, predictingClientId);
-            replicatedEntityCollection.Register(id, entity);
+            var id =  network.RegisterEntity(inId, typeId, predictingClientId);
+            replicateEntityServerSystem.RegisterEntity(id, entity);
             return id;
         }
 
         public void UnRegisterEntity(int id)
         {
             network.UnregisterEntity(id);
-            replicatedEntityCollection.Unregister(id);
+            replicateEntityServerSystem.UnRegisterEntity(id);
+        }
+
+        public void ReserveSceneEntities(int count)
+        {
+            network.ReserveSceneEntities(count);
         }
 
         public void HandleClientCommands(int tick)

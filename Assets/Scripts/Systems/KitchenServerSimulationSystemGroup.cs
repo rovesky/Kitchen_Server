@@ -30,7 +30,7 @@ namespace FootStone.Kitchen
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictUpdateSystemGroup>());
          
             m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterTriggerSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<PickupSystem>());
+         //   m_systemsToUpdate.Add(World.GetOrCreateSystem<PickupSystem>());
          //   m_systemsToUpdate.Add(World.GetOrCreateSystem<TriggerOperationSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateCharPresentationSystem>());

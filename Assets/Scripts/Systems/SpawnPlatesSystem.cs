@@ -1,4 +1,5 @@
-﻿using FootStone.ECS;
+﻿using System.Linq;
+using FootStone.ECS;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
@@ -30,18 +31,33 @@ namespace FootStone.Kitchen
 
             isSpawned = true;
 
-            var query = GetEntityQuery(typeof(TriggerDataComponent));
+            var query = GetEntityQuery(typeof(TriggerData));
 
             var entities = query.ToEntityArray(Allocator.TempJob);
 
+            ////TODO 临时在这里生成Table数据
+            //var entityList = entities.ToList();
+            //entityList.Sort((a, b) => ByteArrayComp.instance.Compare(a, b.netID));
+            //networkServerSystem.ReserveSceneEntities(entities.Length);
+            //for (var i= 0; i< entities.Length; ++i)
+            //{
+            //    var entity = entities[i];
+            //    var id = networkServerSystem.RegisterEntity(i,(ushort)EntityType.Table, -1, entity);
+            //    var replicatedEntityData = EntityManager.GetComponentData<ReplicatedEntityData>(entity);
+            //    replicatedEntityData.Id = id;
+            //    EntityManager.SetComponentData(entity, replicatedEntityData);
+            //}
+         
+            //生成Plate
             for (var i = 0; i < 3; ++i)
             {
                 var entity = entities[i * 2];
-                var slot = EntityManager.GetComponentData<SlotComponent>(entity);
-                var pos = EntityManager.GetComponentData<LocalToWorld>(slot.SlotEntity);
+                var slot = EntityManager.GetComponentData<SlotPredictedState>(entity);
+                //  var pos = EntityManager.GetComponentData<LocalToWorld>(slot.SlotPos);
+              
 
                 var e = EntityManager.Instantiate(platePrefab);
-                var position = new Translation {Value = pos.Position};
+                var position = new Translation {Value = slot.SlotPos };
                 var rotation = new Rotation {Value = Quaternion.identity};
 
                 EntityManager.SetComponentData(e, position);
@@ -55,7 +71,7 @@ namespace FootStone.Kitchen
 
                 EntityManager.AddComponentData(e, new Plate {IsFree = false});
 
-                slot.FiltInEntity = e;
+                slot.FilledInEntity = e;
                 EntityManager.SetComponentData(entity, slot);
 
                 EntityManager.AddComponentData(e, new ItemInterpolatedState
@@ -74,8 +90,7 @@ namespace FootStone.Kitchen
                 });
 
 
-                var id = networkServerSystem.RegisterEntity(1, -1, e);
-
+                var id = networkServerSystem.RegisterEntity(-1,(ushort)EntityType.Plate, -1, e);
                 var replicatedEntityData = EntityManager.GetComponentData<ReplicatedEntityData>(e);
                 replicatedEntityData.Id = id;
                 EntityManager.SetComponentData(e, replicatedEntityData);
