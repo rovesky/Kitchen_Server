@@ -19,8 +19,12 @@ namespace FootStone.Kitchen
         {
             ConfigVar.Init();
             GameWorld.Active = new GameWorld();
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<WorldSceneEntitiesSystem>());
 
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<ReplicateEntityServerSystem>());
+
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HandleCommandsSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerServerSystem>());

@@ -8,14 +8,16 @@ namespace FootStone.Kitchen
     {
         private NetworkServerSystem networkServerSystem;
         private ReplicatedEntityCollection replicatedEntityCollection;
+        private bool isInit;
 
         public int WorldTick => (int) GetSingleton<WorldTime>().Tick;
-      
+
 
         protected override void OnCreate()
         {
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
             replicatedEntityCollection = new ReplicatedEntityCollection(EntityManager);
+          
         }
 
         protected override void OnDestroy()
@@ -26,7 +28,19 @@ namespace FootStone.Kitchen
 
         protected override void OnUpdate()
         {
-           
+            ////TODO 临时在这里生成Table数据
+            if (isInit)
+                return;
+            isInit = true;
+            FSLog.Info($"RegisterEntity");
+            var worldSceneEntitiesSystem = World.GetOrCreateSystem<WorldSceneEntitiesSystem>();
+            networkServerSystem.ReserveSceneEntities(worldSceneEntitiesSystem.SceneEntities.Count);
+            for (var i = 0; i < worldSceneEntitiesSystem.SceneEntities.Count; ++i)
+            {
+                FSLog.Info($"RegisterEntity:{i},{(ushort)EntityType.Table}");
+                var entity = worldSceneEntitiesSystem.SceneEntities[i];
+                networkServerSystem.RegisterEntity(i, (ushort)EntityType.Table, -1, entity);
+            }
         }
 
         public void GenerateEntitySnapshot(int entityId, ref NetworkWriter writer)
