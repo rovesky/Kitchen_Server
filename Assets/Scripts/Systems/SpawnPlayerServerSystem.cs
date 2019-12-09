@@ -50,7 +50,12 @@ namespace FootStone.Kitchen
                     SessionId = spawnPlayer.PlayerId
                 });
 
-                var id = networkServerSystem.RegisterEntity(-1,(ushort)EntityType.Character, spawnPlayer.PlayerId, e);
+                var id = networkServerSystem.RegisterEntity(-1, (ushort) EntityType.Character, spawnPlayer.PlayerId, e);
+
+                var interpolatedState = EntityManager.GetComponentData<CharacterInterpolatedState>(e);
+                interpolatedState.MaterialId = spawnPlayer.PlayerId%4;
+                EntityManager.SetComponentData(e, interpolatedState);
+
                 EntityManager.SetComponentData(e, new ReplicatedEntityData
                 {
                     Id = id,
@@ -62,3 +67,4 @@ namespace FootStone.Kitchen
         }
     }
 }
+

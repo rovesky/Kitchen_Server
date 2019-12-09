@@ -1,4 +1,5 @@
-﻿using FootStone.ECS;
+﻿using System;
+using FootStone.ECS;
 using Unity.Entities;
 
 namespace FootStone.Kitchen
@@ -32,16 +33,18 @@ namespace FootStone.Kitchen
             if (isInit)
                 return;
             isInit = true;
-            FSLog.Info($"RegisterEntity");
+          //  FSLog.Info($"RegisterEntity");
             var worldSceneEntitiesSystem = World.GetOrCreateSystem<WorldSceneEntitiesSystem>();
             networkServerSystem.ReserveSceneEntities(worldSceneEntitiesSystem.SceneEntities.Count);
             for (var i = 0; i < worldSceneEntitiesSystem.SceneEntities.Count; ++i)
             {
-                FSLog.Info($"RegisterEntity:{i},{(ushort)EntityType.Table}");
+                //FSLog.Info($"RegisterEntity:{i},{(ushort)EntityType.Table}");
                 var entity = worldSceneEntitiesSystem.SceneEntities[i];
                 networkServerSystem.RegisterEntity(i, (ushort)EntityType.Table, -1, entity);
             }
         }
+
+      
 
         public void GenerateEntitySnapshot(int entityId, ref NetworkWriter writer)
         {
@@ -51,6 +54,11 @@ namespace FootStone.Kitchen
         public string GenerateEntityName(int entityId)
         {
             return replicatedEntityCollection.GenerateName(entityId);
+        }
+        public bool HasEntity(Entity owner)
+        {
+            var replicatedData = EntityManager.GetComponentData<ReplicatedEntityData>(owner);
+            return replicatedEntityCollection.GetEntity(replicatedData.Id) == owner;
         }
 
         public void RegisterEntity(int id, Entity entity){

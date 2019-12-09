@@ -6,7 +6,7 @@ namespace FootStone.Kitchen
     public struct SpawnPlayerBuffer : IBufferElementData
     {
         public int PlayerId;
-        public int ConnectionId;
+       // public int ConnectionId;
     }
 
     public struct SpawnPlayerServer : IComponentData

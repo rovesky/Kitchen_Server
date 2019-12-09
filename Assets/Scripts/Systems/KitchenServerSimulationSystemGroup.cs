@@ -24,7 +24,6 @@ namespace FootStone.Kitchen
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ReplicateEntityServerSystem>());
-
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HandleCommandsSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerServerSystem>());
@@ -32,14 +31,15 @@ namespace FootStone.Kitchen
             m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateReplicatedOwnerFlag>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictUpdateSystemGroup>());
-      
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<ClearTriggerColorSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateCharPresentationSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateItemPresentationSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyCharPresentationSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyItemPresentationSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<ClientTriggerProcessSystem>());
-      
+            
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnServerSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnItemOwnerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnSystem>());            
         }
 

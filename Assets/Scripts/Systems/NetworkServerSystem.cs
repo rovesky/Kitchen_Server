@@ -11,8 +11,7 @@ namespace FootStone.Kitchen
         private NetworkServer network;
         private ReplicateEntityServerSystem replicateEntityServerSystem;
 
-        // private ReplicatedEntityCollection replicatedEntityCollection;
-
+     
         public void ProcessCommand(int connectionId, int tick, ref NetworkReader data)
         {
             var serverTick = GetSingleton<WorldTime>().Tick;
@@ -61,8 +60,7 @@ namespace FootStone.Kitchen
         public void OnEvent(int clientId, NetworkEvent info)
         {
         }
-
-      //  public int WorldTick => (int) GetSingleton<WorldTime>().Tick;
+        
 
       
 
@@ -74,8 +72,7 @@ namespace FootStone.Kitchen
             network.InitializeMap((ref NetworkWriter data) => { data.WriteString("name", "plane"); });
 
             replicateEntityServerSystem = World.GetOrCreateSystem<ReplicateEntityServerSystem>();
-          //  replicatedEntityCollection = new ReplicatedEntityCollection(EntityManager);
-
+       
             FSLog.Info("server listening on 1001!");
         }
 
