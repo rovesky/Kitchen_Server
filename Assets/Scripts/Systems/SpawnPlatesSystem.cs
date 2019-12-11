@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using FootStone.ECS;
+﻿using FootStone.ECS;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
@@ -12,7 +11,7 @@ namespace FootStone.Kitchen
     {
         private bool isSpawned;
         private NetworkServerSystem networkServerSystem;
-        private WorldSceneEntitiesSystem worldSceneEntitiesSystem;
+    //    private WorldSceneEntitiesSystem worldSceneEntitiesSystem;
         private Entity platePrefab;
 
         protected override void OnCreate()
@@ -23,9 +22,7 @@ namespace FootStone.Kitchen
                 Resources.Load("Plate") as GameObject, World.Active);
 
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
-            worldSceneEntitiesSystem = World.GetOrCreateSystem<WorldSceneEntitiesSystem>();
-
-            
+        //    worldSceneEntitiesSystem = World.GetOrCreateSystem<WorldSceneEntitiesSystem>();
         }
 
         protected override void OnUpdate()
@@ -47,7 +44,6 @@ namespace FootStone.Kitchen
                 var triggerData = EntityManager.GetComponentData<TriggerData>(entity);
                 //  var pos = EntityManager.GetComponentData<LocalToWorld>(slot.SlotPos);
 
-
                 var e = EntityManager.Instantiate(platePrefab);
                 var position = new Translation {Value = triggerData.SlotPos };
                 var rotation = new Rotation {Value = Quaternion.identity};
@@ -61,7 +57,7 @@ namespace FootStone.Kitchen
                     PredictingPlayerId = -1
                 });
 
-                EntityManager.AddComponentData(e, new Plate {IsFree = false});
+                EntityManager.AddComponentData(e, new Plate());
 
                 slot.FilledInEntity = e;
                 EntityManager.SetComponentData(entity, slot);
