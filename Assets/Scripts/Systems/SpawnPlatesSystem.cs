@@ -11,7 +11,6 @@ namespace FootStone.Kitchen
     {
         private bool isSpawned;
         private NetworkServerSystem networkServerSystem;
-    //    private WorldSceneEntitiesSystem worldSceneEntitiesSystem;
         private Entity platePrefab;
 
         protected override void OnCreate()
@@ -19,11 +18,16 @@ namespace FootStone.Kitchen
             base.OnCreate();
 
             platePrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(
-                Resources.Load("Plate") as GameObject, World.Active);
+                Resources.Load("Plate") as GameObject,
+                GameObjectConversionSettings.FromWorld(World,
+                    World.DefaultGameObjectInjectionWorld.GetOrCreateSystem<ConvertToEntitySystem>().BlobAssetStore));
 
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
-        //    worldSceneEntitiesSystem = World.GetOrCreateSystem<WorldSceneEntitiesSystem>();
+
         }
+
+
+   
 
         protected override void OnUpdate()
         {

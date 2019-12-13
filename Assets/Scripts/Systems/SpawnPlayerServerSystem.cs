@@ -11,18 +11,23 @@ namespace FootStone.Kitchen
         private NetworkServerSystem networkServerSystem;
 
         private Entity playerPrefab;
+      
 
         protected override void OnCreate()
         {
             var entity = EntityManager.CreateEntity(typeof(SpawnPlayerServer));
             SetSingleton(new SpawnPlayerServer());
             EntityManager.AddBuffer<SpawnPlayerBuffer>(entity);
-
+       
             playerPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(
-                Resources.Load("Player1") as GameObject, World.Active);
+                Resources.Load("Player1") as GameObject,
+                GameObjectConversionSettings.FromWorld(World, 
+                    World.DefaultGameObjectInjectionWorld.GetOrCreateSystem<ConvertToEntitySystem>().BlobAssetStore));
 
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
         }
+
+      
 
         protected override void OnUpdate()
         {
