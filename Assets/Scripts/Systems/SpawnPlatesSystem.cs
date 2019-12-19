@@ -49,7 +49,7 @@ namespace FootStone.Kitchen
                 //  var pos = EntityManager.GetComponentData<LocalToWorld>(slot.SlotPos);
 
                 var e = EntityManager.Instantiate(platePrefab);
-                var position = new Translation {Value = triggerData.SlotPos };
+                var position = new Translation {Value = triggerData.SlotPos};
                 var rotation = new Rotation {Value = Quaternion.identity};
 
                 EntityManager.SetComponentData(e, position);
@@ -73,16 +73,15 @@ namespace FootStone.Kitchen
                     Owner = Entity.Null
                 });
 
+                EntityManager.AddComponentData(e, new EntityPredictedState());
 
                 EntityManager.AddComponentData(e, new ItemPredictedState
                 {
-                    Position = position.Value,
-                    Rotation = Quaternion.identity,
                     Owner = Entity.Null
                 });
 
 
-                var id = networkServerSystem.RegisterEntity(-1,(ushort)EntityType.Plate, -1, e);
+                var id = networkServerSystem.RegisterEntity(-1, (ushort) EntityType.Plate, -1, e);
                 var replicatedEntityData = EntityManager.GetComponentData<ReplicatedEntityData>(e);
                 replicatedEntityData.Id = id;
                 EntityManager.SetComponentData(e, replicatedEntityData);
