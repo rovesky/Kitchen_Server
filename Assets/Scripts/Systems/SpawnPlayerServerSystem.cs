@@ -47,7 +47,7 @@ namespace FootStone.Kitchen
                 var position = new Vector3 {x = 0, y = 1, z = -5};
                 var rotation = Quaternion.identity;
 
-                CreateEntityUtilities.CreateCharacterComponent(EntityManager, e, position, rotation);
+                CreateCharacterUtilities.CreateCharacterComponent(EntityManager, e, position, rotation);
 
                 EntityManager.AddBuffer<UserCommandBuffer>(e);
                 EntityManager.AddComponentData(e, new Connection

@@ -18,7 +18,7 @@ namespace FootStone.Kitchen
         {
 
             Entities.ForEach((Entity entity,
-                ref EntityPredictedState entityPredictedState,
+                ref TransformPredictedState transformPredictedState,
                 ref ItemPredictedState predictedState,
                 ref ItemInterpolatedState interpolatedState,
                 ref LocalToWorld localToWorld) =>
@@ -29,8 +29,8 @@ namespace FootStone.Kitchen
 
                 predictedState.Owner = Entity.Null;
                 interpolatedState.Owner = Entity.Null;
-                entityPredictedState.Transform.pos = localToWorld.Position;
-                entityPredictedState.Transform.pos.y = 0.05f;
+                transformPredictedState.Position = localToWorld.Position;
+                transformPredictedState.Position.y = 0.05f;
             });
         }
     }
