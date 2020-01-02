@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FootStone.Kitchen
 {
-	[UpdateAfter(typeof(ExportPhysicsWorld)), UpdateBefore(typeof(EndFramePhysicsSystem))]
+	//[UpdateAfter(typeof(ExportPhysicsWorld)), UpdateBefore(typeof(EndFramePhysicsSystem))]
 	public class KitchenServerSimulationSystemGroup : NoSortComponentSystemGroup
     {
 
@@ -32,12 +32,6 @@ namespace FootStone.Kitchen
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictUpdateSystemGroup>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictPresentationSystemGroup>());
-
-            //m_systemsToUpdate.Add(World.GetOrCreateSystem<ClearTriggerColorSystem>());
-            //m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateCharPresentationSystem>());
-            //m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateItemPresentationSystem>());
-            //m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyCharPresentationSystem>());
-            //m_systemsToUpdate.Add(World.GetOrCreateSystem<ApplyItemPresentationSystem>());
             
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnServerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnItemOwnerSystem>());
