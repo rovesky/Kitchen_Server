@@ -25,7 +25,7 @@ namespace FootStone.Kitchen
                     //获取当前serverTick的command
                     if (buffer[i].Command.CheckTick == tick)
                     {
-                        //  FSLog.Info($"use command:{buffer[i].command.renderTick},{buffer[i].command.checkTick},{tick}");
+                     //   FSLog.Info($"use command:{buffer[i].Command.RenderTick},{buffer[i].Command.CheckTick},{tick}");
                         userCommand = buffer[i].Command;
                     }
                 }
