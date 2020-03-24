@@ -37,7 +37,7 @@ namespace FootStone.Kitchen
 
             isSpawned = true;
 
-            var query = GetEntityQuery(typeof(TriggerData));
+            var query = GetEntityQuery(typeof(TriggeredSetting));
             var entities = query.ToEntityArray(Allocator.TempJob);
           
 
@@ -46,7 +46,7 @@ namespace FootStone.Kitchen
             {
                 var entity = entities[i * 2];
                 var slot = EntityManager.GetComponentData<SlotPredictedState>(entity);
-                var triggerData = EntityManager.GetComponentData<TriggerData>(entity);
+                var triggerData = EntityManager.GetComponentData<TriggeredSetting>(entity);
                 //  var pos = EntityManager.GetComponentData<LocalToWorld>(slot.SlotPos);
 
                 var e = EntityManager.Instantiate(platePrefab);

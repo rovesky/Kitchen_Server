@@ -27,7 +27,12 @@ namespace FootStone.Kitchen
                     replicateEntityServerSystem.HasEntity(predictedState.Owner))
                     return;
 
+                //if (predictedState.PreOwner == Entity.Null || 
+                //    replicateEntityServerSystem.HasEntity(predictedState.PreOwner))
+                //    return;
+
                 predictedState.Owner = Entity.Null;
+                predictedState.PreOwner= Entity.Null;
                 interpolatedState.Owner = Entity.Null;
                 transformPredictedState.Position = localToWorld.Position;
                 transformPredictedState.Position.y = 0.05f;
