@@ -23,19 +23,28 @@ namespace FootStone.Kitchen
                 ref ItemInterpolatedState interpolatedState,
                 ref LocalToWorld localToWorld) =>
             {
-                if (predictedState.Owner == Entity.Null || 
-                    replicateEntityServerSystem.HasEntity(predictedState.Owner))
-                    return;
-
-                //if (predictedState.PreOwner == Entity.Null || 
-                //    replicateEntityServerSystem.HasEntity(predictedState.PreOwner))
-                //    return;
+                if (predictedState.Owner == Entity.Null ||
+                     replicateEntityServerSystem.HasEntity(predictedState.Owner))
+                return;
 
                 predictedState.Owner = Entity.Null;
-                predictedState.PreOwner= Entity.Null;
+                predictedState.PreOwner = Entity.Null;
                 interpolatedState.Owner = Entity.Null;
                 transformPredictedState.Position = localToWorld.Position;
                 transformPredictedState.Position.y = 0.05f;
+            });
+
+
+            Entities.ForEach((Entity entity,
+                ref ItemPredictedState predictedState
+              ) =>
+            {
+                if (predictedState.PreOwner == Entity.Null ||
+                    replicateEntityServerSystem.HasEntity(predictedState.PreOwner))
+                    return;
+
+                predictedState.PreOwner = Entity.Null;
+
             });
         }
     }
