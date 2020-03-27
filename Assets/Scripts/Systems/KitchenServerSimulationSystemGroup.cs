@@ -29,6 +29,10 @@ namespace FootStone.Kitchen
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerServerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlatesSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnRobotsSystem>());
+
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<RobotsControlSystem>());
+
             m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateReplicatedOwnerFlag>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictUpdateSystemGroup>());

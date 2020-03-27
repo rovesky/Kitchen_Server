@@ -1,4 +1,5 @@
 ﻿using Unity.Entities;
+using Unity.Mathematics;
 
 namespace FootStone.Kitchen
 {
@@ -6,7 +7,8 @@ namespace FootStone.Kitchen
     public struct SpawnPlayerBuffer : IBufferElementData
     {
         public int PlayerId;
-       // public int ConnectionId;
+        public float3 Position;
+        public bool IsRobot;
     }
 
     public struct SpawnPlayerServer : IComponentData

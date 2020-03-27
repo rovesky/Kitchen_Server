@@ -27,9 +27,6 @@ namespace FootStone.Kitchen
 
         }
 
-
-   
-
         protected override void OnUpdate()
         {
             if (isSpawned)
@@ -62,44 +59,6 @@ namespace FootStone.Kitchen
                 replicatedEntityData.Id = id;
                 replicatedEntityData.PredictingPlayerId = -1;
                 EntityManager.SetComponentData(e, replicatedEntityData);
-
-          
-
-                //  var position = new Translation {Value = triggerData.SlotPos};
-                //  var rotation = new Rotation {Value = Quaternion.identity};
-
-
-
-                //EntityManager.SetComponentData(e, position);
-                //EntityManager.SetComponentData(e, rotation);
-
-                //EntityManager.AddComponentData(e, new ReplicatedEntityData()
-                //{
-                //    Id = -1,
-                //    PredictingPlayerId = -1
-                //});
-
-                //EntityManager.AddComponentData(e, new Plate());
-
-
-
-                //EntityManager.AddComponentData(e, new ItemInterpolatedState
-                //{
-                //    Position = position.Value,
-                //    Rotation = Quaternion.identity,
-                //    Owner = Entity.Null
-                //});
-
-                //EntityManager.AddComponentData(e, new EntityPredictedState());
-
-                //EntityManager.AddComponentData(e, new ItemPredictedState
-                //{
-                //    Owner = Entity.Null
-                //});
-
-
-
-
             }
 
             entities.Dispose();

@@ -1,5 +1,6 @@
 ﻿using FootStone.ECS;
 using Unity.Entities;
+using Unity.Mathematics;
 
 namespace FootStone.Kitchen
 {
@@ -40,7 +41,12 @@ namespace FootStone.Kitchen
 
             var entity = GetSingletonEntity<SpawnPlayerServer>();
             var buffer = EntityManager.GetBuffer<SpawnPlayerBuffer>(entity);
-            buffer.Add(new SpawnPlayerBuffer {PlayerId = clientId});
+            buffer.Add(new SpawnPlayerBuffer
+            {
+                PlayerId = clientId,
+                IsRobot = false,
+                Position = new float3(0, 1,  -5)
+            });
 
             network.MapReady(clientId);
         }
@@ -60,9 +66,6 @@ namespace FootStone.Kitchen
         public void OnEvent(int clientId, NetworkEvent info)
         {
         }
-        
-
-      
 
         protected override void OnCreate()
         {
@@ -92,7 +95,6 @@ namespace FootStone.Kitchen
         {
             network.SendData();
         }
-
 
         public void GenerateSnapshot(float lastSimTime)
         {
