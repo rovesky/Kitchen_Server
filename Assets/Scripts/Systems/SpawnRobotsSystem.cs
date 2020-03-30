@@ -1,9 +1,5 @@
-﻿using FootStone.ECS;
-using Unity.Collections;
-using Unity.Entities;
+﻿using Unity.Entities;
 using Unity.Mathematics;
-using Unity.Transforms;
-using UnityEngine;
 
 namespace FootStone.Kitchen
 {
@@ -14,6 +10,7 @@ namespace FootStone.Kitchen
 
         protected override void OnUpdate()
         {
+            return;
             if (isSpawned)
                 return;
 
@@ -23,7 +20,7 @@ namespace FootStone.Kitchen
             var buffer = EntityManager.GetBuffer<SpawnPlayerBuffer>(entity);
             buffer.Add(new SpawnPlayerBuffer
             {
-                PlayerId = -2,
+                PlayerId = 3,
                 IsRobot = true,
                 Position = new float3(2, 1,  -5)
             });

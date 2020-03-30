@@ -14,6 +14,8 @@ namespace FootStone.Kitchen
     {
 
         private Random random;
+        private float x;
+        private float z;
 
         protected override void OnCreate()
         {
@@ -27,16 +29,20 @@ namespace FootStone.Kitchen
                 .ForEach((Entity entity, in Robot robot) =>
                 {
                     var serverTick = GetSingleton<WorldTime>().Tick;
-
-                    if (serverTick % 100 != 0)
-                        return;
-
                     var commandBuffer = new UserCommandBuffer();
-                   
-                  //  commandBuffer.Command.TargetDir =
-                      //  (new Vector3(random.NextFloat(-1,1),0,random.NextFloat(-1,1))).normalized;
 
-                  //  commandBuffer.Command.Buttons.Set(UserCommand.Button.Jump, true);
+                    if (serverTick % 100 == 0)
+                    {
+                        x = random.NextFloat(-1, 1);
+                        z = random.NextFloat(-1, 1);
+                    }
+                    if (serverTick % 100 < 10)
+                    {
+                        commandBuffer.Command.TargetDir =
+                            (new Vector3(x, 0, z)).normalized;
+                    }
+
+                    //  commandBuffer.Command.Buttons.Set(UserCommand.Button.Jump, true);
                     commandBuffer.Command.CheckTick = serverTick + 1;
                     EntityManager.GetBuffer<UserCommandBuffer>(entity).Add(commandBuffer);
                 }).Run();

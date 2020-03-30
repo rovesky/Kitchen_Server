@@ -51,13 +51,14 @@ namespace FootStone.Kitchen
 
                 EntityManager.AddBuffer<UserCommandBuffer>(e);
 
-                if (!spawnPlayer.IsRobot)
+                if (spawnPlayer.IsRobot)
+                    EntityManager.AddComponentData(e, new Robot());
+                else
                     EntityManager.AddComponentData(e, new Connection
                     {
                         SessionId = spawnPlayer.PlayerId
                     });
-                else
-                    EntityManager.AddComponentData(e, new Robot());
+                  
 
                 var id = networkServerSystem.RegisterEntity(-1, (ushort) EntityType.Character, spawnPlayer.PlayerId, e);
 
