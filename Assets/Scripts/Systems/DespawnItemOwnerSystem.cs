@@ -27,6 +27,9 @@ namespace FootStone.Kitchen
                      replicateEntityServerSystem.HasEntity(predictedState.Owner))
                 return;
 
+                if(!EntityManager.HasComponent<Character>(predictedState.Owner))
+                    return;
+
                 predictedState.Owner = Entity.Null;
                 predictedState.PreOwner = Entity.Null;
                 interpolatedState.Owner = Entity.Null;
