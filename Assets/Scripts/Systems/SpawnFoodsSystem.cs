@@ -28,9 +28,9 @@ namespace FootStone.Kitchen
         {
             base.OnCreate();
 
-            var entity = EntityManager.CreateEntity(typeof(SpawnFood));
-            SetSingleton(new SpawnFood());
-            EntityManager.AddBuffer<SpawnFoodBuffer>(entity);
+            var entity = EntityManager.CreateEntity(typeof(SpawnFoodArray));
+            SetSingleton(new SpawnFoodArray());
+            EntityManager.AddBuffer<SpawnFoodRequest>(entity);
 
             RegisterPrefabs(EntityType.Apple, "Apple");
             RegisterPrefabs(EntityType.AppleSlice, "AppleSlice");
@@ -42,8 +42,8 @@ namespace FootStone.Kitchen
         protected override void OnUpdate()
         {
           
-            var entity = GetSingletonEntity<SpawnFood>();
-            var buffer = EntityManager.GetBuffer<SpawnFoodBuffer>(entity);
+            var entity = GetSingletonEntity<SpawnFoodArray>();
+            var buffer = EntityManager.GetBuffer<SpawnFoodRequest>(entity);
             if (buffer.Length == 0)
                 return;
 
