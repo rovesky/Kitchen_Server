@@ -10,7 +10,7 @@ namespace FootStone.Kitchen
 
         protected override void OnUpdate()
         {
-           
+           return;
             if (isSpawned)
                 return;
 
