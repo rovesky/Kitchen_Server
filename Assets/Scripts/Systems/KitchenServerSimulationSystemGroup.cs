@@ -27,10 +27,12 @@ namespace FootStone.Kitchen
             m_systemsToUpdate.Add(World.GetOrCreateSystem<ReplicateEntityServerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<HandleCommandsSystem>());
 
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnGameSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlayerServerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnPlatesSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnRobotsSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnFoodsSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnMenuSystem>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<RobotsControlSystem>());
 
@@ -40,7 +42,9 @@ namespace FootStone.Kitchen
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterPickupBoxSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<FoodSlicedSystem>());
-            
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<CountdownSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<MenuSystem>());
+
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictPresentationSystemGroup>());
             
