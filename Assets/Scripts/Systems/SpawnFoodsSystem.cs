@@ -32,8 +32,12 @@ namespace FootStone.Kitchen
             SetSingleton(new SpawnFoodArray());
             EntityManager.AddBuffer<SpawnFoodRequest>(entity);
 
-            RegisterPrefabs(EntityType.Apple, "Apple");
-            RegisterPrefabs(EntityType.AppleSlice, "AppleSlice");
+            RegisterPrefabs(EntityType.Shrimp, "Shrimp");
+            RegisterPrefabs(EntityType.ShrimpSlice, "ShrimpSlice");
+            RegisterPrefabs(EntityType.KelpSlice, "KelpSlice");
+            RegisterPrefabs(EntityType.Rice, "Rice");
+            RegisterPrefabs(EntityType.Cucumber, "Cucumber");
+            RegisterPrefabs(EntityType.CucumberSlice, "CucumberSlice");
 
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
 
