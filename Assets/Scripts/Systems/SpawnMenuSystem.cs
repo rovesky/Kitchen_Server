@@ -18,8 +18,8 @@ namespace FootStone.Kitchen
             SetSingleton(new SpawnMenuArray());
             EntityManager.AddBuffer<SpawnMenuRequest>(entity);
 
-            RegisterMenu(MenuType.Shrimp, 1,1);
-            RegisterMenu(MenuType.Sushi, 2,1,2,3,4);
+            RegisterMenu(MenuType.Shrimp, 1,5);
+            RegisterMenu(MenuType.Sushi, 2,6,1,7);
 
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
         }

@@ -43,7 +43,8 @@ namespace FootStone.Kitchen
                 None = new ComponentType[]
                 {
                     typeof(BoxSetting),
-                    typeof(TableSlice)
+                    typeof(TableSlice),
+                    typeof(TableServe)
                 }
             });
             var entities = query.ToEntityArray(Allocator.TempJob);
