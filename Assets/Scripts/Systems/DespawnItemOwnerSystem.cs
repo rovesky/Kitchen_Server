@@ -19,19 +19,19 @@ namespace FootStone.Kitchen
 
             Entities.ForEach((Entity entity,
                 ref TransformPredictedState transformPredictedState,
-                ref ItemPredictedState predictedState,
+                ref OwnerPredictedState ownerState,
                 ref ItemInterpolatedState interpolatedState,
                 ref LocalToWorld localToWorld) =>
             {
-                if (predictedState.Owner == Entity.Null ||
-                     replicateEntityServerSystem.HasEntity(predictedState.Owner))
+                if (ownerState.Owner == Entity.Null ||
+                     replicateEntityServerSystem.HasEntity(ownerState.Owner))
                 return;
 
-                if(!EntityManager.HasComponent<Character>(predictedState.Owner))
+                if(!EntityManager.HasComponent<Character>(ownerState.Owner))
                     return;
 
-                predictedState.Owner = Entity.Null;
-                predictedState.PreOwner = Entity.Null;
+                ownerState.Owner = Entity.Null;
+                ownerState.PreOwner = Entity.Null;
                 interpolatedState.Owner = Entity.Null;
                 transformPredictedState.Position = localToWorld.Position;
                 transformPredictedState.Position.y = 0.05f;
@@ -39,14 +39,14 @@ namespace FootStone.Kitchen
 
 
             Entities.ForEach((Entity entity,
-                ref ItemPredictedState predictedState
+                ref OwnerPredictedState ownerState
               ) =>
             {
-                if (predictedState.PreOwner == Entity.Null ||
-                    replicateEntityServerSystem.HasEntity(predictedState.PreOwner))
+                if (ownerState.PreOwner == Entity.Null ||
+                    replicateEntityServerSystem.HasEntity(ownerState.PreOwner))
                     return;
 
-                predictedState.PreOwner = Entity.Null;
+                ownerState.PreOwner = Entity.Null;
 
             });
         }
