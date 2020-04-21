@@ -40,14 +40,7 @@ namespace FootStone.Kitchen
             m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateReplicatedOwnerFlag>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictUpdateSystemGroup>());
-
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<CharacterPickupBoxSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<FoodSlicedSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<CountdownSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<MenuSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<ServeSystem>());
-            m_systemsToUpdate.Add(World.GetOrCreateSystem<PlateServedSystem>());
-
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<ServerSystemGroup>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictPresentationSystemGroup>());
             
