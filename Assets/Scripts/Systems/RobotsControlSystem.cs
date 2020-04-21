@@ -24,6 +24,27 @@ namespace FootStone.Kitchen
 
         protected override void OnUpdate()
         {
+           
+            var gameQuery = GetEntityQuery(new EntityQueryDesc
+            {
+                All = new ComponentType[]
+                {
+                    typeof(GameStateComponent)
+                }
+            });
+
+            if (gameQuery.CalculateEntityCount() < 1)
+                return;
+
+            var gameEntities = gameQuery.ToEntityArray(Allocator.TempJob);
+            var gameState = EntityManager.GetComponentData<GameStateComponent>(gameEntities[0]);
+            if (gameState.State != GameState.Playing)
+            {
+                gameEntities.Dispose();
+                return;
+            }
+            gameEntities.Dispose();
+        //    FSLog.Info("RobotsControlSystem");
             Entities
                 .WithStructuralChanges()
                 .ForEach((Entity entity, in Robot robot) =>
@@ -36,6 +57,7 @@ namespace FootStone.Kitchen
                         x = random.NextFloat(-1, 1);
                         z = random.NextFloat(-1, 1);
                     }
+
                     if (serverTick % 100 < 10)
                     {
                         commandBuffer.Command.TargetDir =

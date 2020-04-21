@@ -18,6 +18,8 @@ namespace FootStone.Kitchen
         protected override void OnCreate()
         {
             ConfigVar.Init();
+            ItemCreateUtilities.Init();
+
             GameWorld.Active = new GameWorld();
             UnityEngine.Time.fixedDeltaTime = GameTick.DefaultGameTick.TickInterval;
 
@@ -33,10 +35,9 @@ namespace FootStone.Kitchen
             m_systemsToUpdate.Add(World.GetOrCreateSystem<SpawnSystemGroup>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<RegisterEntityToNetwork>());
-    
 
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<PrintGameStateSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<RobotsControlSystem>());
-
             m_systemsToUpdate.Add(World.GetOrCreateSystem<UpdateReplicatedOwnerFlag>());
 
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictUpdateSystemGroup>());
