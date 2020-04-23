@@ -37,9 +37,14 @@ namespace FootStone.Kitchen
             networkServerSystem.ReserveSceneEntities(worldSceneEntitiesSystem.SceneEntities.Count);
             for (var i = 0; i < worldSceneEntitiesSystem.SceneEntities.Count; ++i)
             {
-                //FSLog.Info($"RegisterEntity:{i},{(ushort)EntityType.Table}");
+               
                 var entity = worldSceneEntitiesSystem.SceneEntities[i];
-                networkServerSystem.RegisterEntity(i, (ushort)EntityType.Table, -1, entity);
+
+                var type = EntityManager.HasComponent<GameEntity>(entity)
+                    ? EntityManager.GetComponentData<GameEntity>(entity).Type
+                    : EntityType.Table;
+                FSLog.Info($"RegisterEntity:{i},{type}");
+                networkServerSystem.RegisterEntity(i, (ushort) type, -1, entity);
             }
         }
 
