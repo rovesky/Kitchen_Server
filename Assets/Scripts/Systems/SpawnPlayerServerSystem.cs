@@ -20,7 +20,7 @@ namespace FootStone.Kitchen
             EntityManager.AddBuffer<SpawnPlayerBuffer>(entity);
        
             playerPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(
-                Resources.Load("Player1") as GameObject,
+                Resources.Load("Character/CharacterEntity") as GameObject,
                 GameObjectConversionSettings.FromWorld(World, 
                     World.DefaultGameObjectInjectionWorld.GetOrCreateSystem<ConvertToEntitySystem>().BlobAssetStore));
 
