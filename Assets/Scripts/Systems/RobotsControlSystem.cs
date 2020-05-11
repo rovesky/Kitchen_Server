@@ -24,7 +24,7 @@ namespace FootStone.Kitchen
 
         protected override void OnUpdate()
         {
-           
+           return;
             var gameQuery = GetEntityQuery(new EntityQueryDesc
             {
                 All = new ComponentType[]

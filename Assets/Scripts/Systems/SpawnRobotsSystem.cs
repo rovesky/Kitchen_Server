@@ -22,8 +22,9 @@ namespace FootStone.Kitchen
             {
                 PlayerId = 3,
                 IsRobot = true,
-                Position = new float3(2, 1,  -5)
+              //  Position = new float3(2, 1,  -5)
             });
+    
            
         }
     }
