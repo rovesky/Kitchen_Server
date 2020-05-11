@@ -23,6 +23,9 @@ namespace FootStone.Kitchen
             GameWorld.Active = new GameWorld();
             UnityEngine.Time.fixedDeltaTime = GameTick.DefaultGameTick.TickInterval;
 
+            EntityManager.CreateEntity(typeof(Server));
+            SetSingleton(new Server());
+
             m_systemsToUpdate.Add(World.GetOrCreateSystem<WorldSceneEntitiesSystem>());
             networkServerSystem = World.GetOrCreateSystem<NetworkServerSystem>();
 
