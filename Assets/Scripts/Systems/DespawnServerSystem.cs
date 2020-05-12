@@ -17,7 +17,7 @@ namespace FootStone.Kitchen
         {
             Entities.ForEach((Entity entity, ref Despawn despawn) =>
             {
-                if (despawn.Frame > 0)
+                if (despawn.Tick > 0)
                     return;
                 
                 if (!EntityManager.HasComponent<ReplicatedEntityData>(entity))
