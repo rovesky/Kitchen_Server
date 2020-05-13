@@ -59,7 +59,12 @@ namespace FootStone.Kitchen
             Entities.ForEach((Entity entity, ref Connection connection) =>
             {
                 if (clientId == connection.SessionId)
-                    EntityManager.AddComponentData(entity, new Despawn());
+                    EntityManager.SetComponentData(entity,new DespawnPredictedState()
+                    {
+                        IsDespawn = true,
+                        Tick = 0
+                    });
+                  //  EntityManager.AddComponentData(entity, new Despawn());
             });
         }
 
