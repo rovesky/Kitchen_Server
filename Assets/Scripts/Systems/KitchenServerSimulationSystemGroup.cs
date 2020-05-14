@@ -1,11 +1,13 @@
 ﻿using FootStone.ECS;
 using Unity.Entities;
 using Unity.Physics.Systems;
+using Unity.Transforms;
 using UnityEngine;
 
 namespace FootStone.Kitchen
 {
 	//[UpdateAfter(typeof(ExportPhysicsWorld)), UpdateBefore(typeof(EndFramePhysicsSystem))]
+    [UpdateBefore(typeof(TransformSystemGroup))]
 	public class KitchenServerSimulationSystemGroup : NoSortComponentSystemGroup
     {
 
@@ -49,6 +51,7 @@ namespace FootStone.Kitchen
             m_systemsToUpdate.Add(World.GetOrCreateSystem<PredictPresentationSystemGroup>());
             
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnServerSystem>());
+            m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnCharacterSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnItemOwnerSystem>());
             m_systemsToUpdate.Add(World.GetOrCreateSystem<DespawnSystem>());            
         }
