@@ -76,9 +76,9 @@ namespace FootStone.Kitchen
 
                 var id = networkServerSystem.RegisterEntity(-1, (ushort) EntityType.Character, spawnPlayer.PlayerId, e);
 
-                var interpolatedState = EntityManager.GetComponentData<CharacterInterpolatedState>(e);
-                interpolatedState.MaterialId =  (byte) (spawnPlayer.PlayerId % 4);
-                EntityManager.SetComponentData(e, interpolatedState);
+                //var interpolatedState = EntityManager.GetComponentData<CharacterInterpolatedState>(e);
+                //interpolatedState.MaterialId =  (byte) (spawnPlayer.PlayerId % 4);
+                //EntityManager.SetComponentData(e, interpolatedState);
 
                 EntityManager.SetComponentData(e, new ReplicatedEntityData
                 {
