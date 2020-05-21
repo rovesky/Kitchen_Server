@@ -76,12 +76,13 @@ namespace FootStone.Kitchen
         {
             base.OnCreate();
 
+           // NetworkConfig.serverPort.Value = CmdTest.Port;
             network = new NetworkServer(GameWorld.Active);
             network.InitializeMap((ref NetworkWriter data) => { data.WriteString("name", "plane"); });
 
             replicateEntityServerSystem = World.GetOrCreateSystem<ReplicateEntityServerSystem>();
        
-            FSLog.Info("server listening on 1001!");
+            FSLog.Info($"server listening on {NetworkConfig.serverPort.Value}!");
         }
 
         protected override void OnDestroy()

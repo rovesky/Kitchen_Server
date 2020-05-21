@@ -1,4 +1,5 @@
-﻿using FootStone.ECS;
+﻿using System;
+using FootStone.ECS;
 using Unity.Entities;
 using Unity.Physics.Systems;
 using Unity.Transforms;
@@ -20,6 +21,16 @@ namespace FootStone.Kitchen
         protected override void OnCreate()
         {
             ConfigVar.Init();
+
+            var commandLineArgs = Environment.GetCommandLineArgs();
+            foreach (var commandLine in commandLineArgs)
+            {
+                if(commandLine.StartsWith("-Port:"))
+                    NetworkConfig.serverPort.Value = commandLine.Substring(6);
+                FSLog.Info($"commandLineArgs:{commandLine}");
+            }
+        
+
             ItemCreateUtilities.Init();
 
             GameWorld.Active = new GameWorld();
